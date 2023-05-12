@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RideOn.Data;
+using RideOn.Models;
 
 namespace RideOn
 {
@@ -21,6 +22,23 @@ namespace RideOn
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    context.Database.Migrate();
+                    SeedCar.Initialize(services); // Call SeedCar.Initialize to seed the database
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

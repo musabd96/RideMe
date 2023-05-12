@@ -10,7 +10,7 @@ namespace RideOn.Models
             using var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
             // Check if database is already seeded
-            if (context.Cars.Any())
+            if (context.Car.Any())
             {
                 return; // Database is already seeded
             }
@@ -53,7 +53,7 @@ namespace RideOn.Models
 
                 new Car
                 {
-                    Image = "https://e7.pngegg.com/pngimages/78/402/png-clipart-2018-volvo-xc60-2016-volvo-xc60-car-volvo-s90-volvo-compact-car-automatic-transmission-thumbnail.png",
+                    Image = "https://static.fbinhouse.se/480x/2019-11/S60_sedan_750x422.png",
                     Make = "Volvo",
                     Model = "S90",
                     Year = 2021,
@@ -222,7 +222,7 @@ namespace RideOn.Models
 
                 new Car
                 {
-                    Image = "https://e7.pngegg.com/pngimages/768/790/png-clipart-jeep-grand-cherokee-car-sport-utility-vehicle-2018-jeep-compass-jeep-car-compass.png",
+                    Image = "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/stock-images/thumbnails/large/chrome/cfafc3bc889c4990c118d69a2f39f415.png",
                     Make = "Jeep",
                     Model = "Compass",
                     Year = 2021,
@@ -469,7 +469,7 @@ namespace RideOn.Models
             };
 
             // Add the Car objects to the context
-            context.Cars.AddRange(cars);
+            context.Car.AddRange(cars);
 
             // Save the changes to the database
             context.SaveChanges();

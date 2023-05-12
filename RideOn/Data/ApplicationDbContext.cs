@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RideOn.Models;
 
 namespace RideOn.Data
 {
@@ -9,5 +10,6 @@ namespace RideOn.Data
             : base(options)
         {
         }
+        public DbSet<Car> Car { get; set; }
     }
 }
