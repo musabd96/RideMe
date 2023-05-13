@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RideOn.Models.Car>
+
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<h2 class="my-4">Booking</h2>
+
+<div class="row">
+    @foreach(var car in Model)
+    {
+        <div class="col-3"> 
+            <div class="card">
+
+                <div class="card-body" style="height: 6em">
+                    <h5 class="mb-3">@car.Make</h5>
+                    <h5 class="mb-3">@car.Model</h5>
+                </div>
+                <img src="@car.Image" alt="" class="card-img-top">
+                <div class="card-body">
+                    <span class="card-text">@car.DailyRate</span>
+                    <a asp-controller="" asp-action="" asp-route-id="@car.Id" class="btn btn-primary float-right">Select</a>
+                </div>
+                
+            </div>
+        </div>
+    }
+</div>

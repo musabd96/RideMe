@@ -40,7 +40,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img class="rounded-circle" src="@item.Image" alt="@item.Model" style="max-width: 150px" />
+                <img auto src="@item.Image" alt="@item.Model" style="max-width: 150px" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Make)
