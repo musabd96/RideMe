@@ -222,7 +222,7 @@ namespace RideOn.Models
 
                 new Car
                 {
-                    Image = "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/stock-images/thumbnails/large/chrome/cfafc3bc889c4990c118d69a2f39f415.png",
+                    Image = "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/stock-images/thumbnails/large/chrome/7ef3fe1682c400cb3a95bdaa409a3375.png",
                     Make = "Jeep",
                     Model = "Compass",
                     Year = 2021,
@@ -312,7 +312,7 @@ namespace RideOn.Models
                 // Audi
                 new Car
                 {
-                    Image = "https://w7.pngwing.com/pngs/448/564/png-transparent-2018-audi-a3-car-audi-sportback-concept-audi-a3-8v-audi-compact-car-sedan-car.png",
+                    Image = "https://file.kelleybluebookimages.com/kbb/base/evox/CP/50245/2023-Audi-A3-front_50245_032_2400x1800_2Y2Y.png",
                     Make = "Audi",
                     Model = "A3",
                     Year = 2021,
@@ -323,7 +323,7 @@ namespace RideOn.Models
 
                 new Car
                 {
-                    Image = "https://e7.pngegg.com/pngimages/672/211/png-clipart-black-audi-sedan-car-audi-a3-audi-a4-car-compact-car-sedan.png",
+                    Image = "https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/0ec4ca7b-51ca-4911-9915-67dc18aedbd6/78afd191-7f78-49a0-884d-d625abffed6f.png",
                     Make = "Audi",
                     Model = "A4",
                     Year = 2021,
@@ -356,7 +356,7 @@ namespace RideOn.Models
 
                 new Car
                 {
-                    Image = "https://w7.pngwing.com/pngs/1021/326/png-transparent-2016-audi-q5-hybrid-2015-audi-q5-car-audi-a6-volcano-car-automatic-transmission-vehicle.png",
+                    Image = "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/vhs/Audi-SQ5_0.png",
                     Make = "Audi",
                     Model = "Q5",
                     Year = 2021,
