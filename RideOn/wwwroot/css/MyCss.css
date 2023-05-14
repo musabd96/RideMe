@@ -1,4 +1,75 @@
-﻿body {
+﻿
+
+/* Home page Styles */
+.home .container-fluid {
+    width: 100vw;
+    height: 50%;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    background-image: url('https://www.motortrend.com/uploads/2022/04/BMW-i7-1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-right: 0px;
+    padding-left: 0px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.home .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.home .content .row .col-lg-8 .text .text-center {
+    margin-top:10rem;
+    margin-bottom: 3rem;
+}
+
+.home .content .row .col-lg-8 .text .text-center h1 {
+    color: #1D3461;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.home .container {
+    width: 30rem;
+    background: #ff6f1a;
+    font-size: 1.5rem;
+    color: #191919;
+    padding: 3rem;
+    border-radius: 1.5rem 1.5rem;
+    float: left;
+    margin-bottom: 10rem;
+}
+
+
+
+.home .container .form-group .btn {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff;
+    border-radius: 8px 8px;
+    margin-top: 2rem;
+}
+
+.home .container .form-group .btn:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+    color: #fff;
+}
+
+
+
+
+
+
+/* Booking page Styles */
+body {
     font-family: Varela Round;
     background: #f1f1f1;
 }
@@ -60,6 +131,8 @@ a {
     color: #636262;
 }
 
+
+
 .card-button {
     display: flex;
     justify-content: center;
@@ -99,5 +172,19 @@ a {
         -webkit-transform: scale(0.9);
         transform: scale(0.9);
         box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+}
+
+
+
+
+@media screen and (min-width:777px) {
+    .nav-link {
+        padding: 18px 0;
+        min-width: 120px;
+    }
+
+    .navbar {
+        padding: 0
     }
 }

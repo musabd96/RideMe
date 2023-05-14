@@ -2,7 +2,98 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home">
+	
+	<div class="container-fluid bg-image" >
+	</div>
+	<div class="content">
+		<div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+			<div class="col-lg-8 ftco-animate">
+				<div class="text w-100 text-center mb-md-5 pb-md-5">
+					<div class="text-center">
+						<h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
+						<h1 class="mb-4"> Great cars at affordable prices </h1>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="pickup-location">Pick-up Location</label>
+                    <select class="form-control" id="dropoff-location" placeholder="Select City or Airport" >
+                        <option value="-Select City or Airport-">-Select City or Airport-</option>
+                        <option value="Stockholmn">Stockholmn</option>
+                        <option value="Gothenburg">Gothenburg</option>
+                        <option value="Malmö">Malmö</option>
+                        <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                        <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="dropoff-location">Drop-off Location</label>
+                    <select class="form-control" id="pickup-location" placeholder="Select City or Airport">
+                        <option value="-Select City or Airport-">-Select City or Airport-</option>
+                        <option value="Stockholmn">Stockholmn</option>
+                        <option value="Gothenburg">Gothenburg</option>
+                        <option value="Malmö">Malmö</option>
+                        <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                        <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                    </select>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="pickup-date">Pick-up Date</label>
+                    <input type="date" class="form-control" id="pickup-date">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="pickup-time">Time</label>
+                    <input type="time" class="form-control" id="pickup-time">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="return-date">Return Date</label>
+                    <input type="date" class="form-control" id="return-date">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="return-time">Time</label>
+                    <input type="time" class="form-control" id="return-time">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <a class="btn btn-primary btn-block" asp-area="" asp-controller="Booking" asp-action="Index">Book Now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>
