@@ -1,16 +1,16 @@
 ﻿
-
 /* Home page Styles */
 .home .container-fluid {
-    width: 100vw;
+    /*width: 100vw;*/
     height: 50%;
     position: absolute;
-    top: 28%;
+    top: 27%;
     left: 50%;
     background-image: url('https://www.motortrend.com/uploads/2022/04/BMW-i7-1.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     padding-right: 0px;
     padding-left: 0px;
     transform: translate(-50%, -50%);
@@ -27,10 +27,14 @@
     margin-bottom: 3rem;
 }
 
-.home .content .row .col-lg-8 .text .text-center h1 {
-    color: #1D3461;
+.home .content .row .col-lg-8 .text .text-center h1{
+    color: #fff;
     font-size: 3rem;
     font-weight: bold;
+}
+.home .content .row .col-lg-8 .text .text-center p {
+    color: #fff;
+    font-size: 2rem;
 }
 
 .home .container {
