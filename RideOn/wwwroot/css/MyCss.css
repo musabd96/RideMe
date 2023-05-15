@@ -1,71 +1,98 @@
 ﻿
+/* Nav bar Styles */
+
+.navbar-nav .nav-item .nav-link {
+    color: #fff;
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #fe6e19;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Home page Styles */
-.home .container-fluid {
-    /*width: 100vw;*/
-    height: 50%;
-    position: absolute;
-    top: 27%;
-    left: 50%;
-    background-image: url('https://www.motortrend.com/uploads/2022/04/BMW-i7-1.png');
+.container .bg-image {
+    background-image: url('https://ev-database.org/img/auto/BMW_i4_M50/BMW_i4_M50-01@2x.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
-    padding-right: 0px;
-    padding-left: 0px;
-    transform: translate(-50%, -50%);
-    z-index: -1;
+    width: 100vw;
+    height: 30vw;
+    /*position: fixed;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*bottom: 40rem;*/
+    /*z-index: -1;*/
 }
 
-.home .content {
-    display: flex;
-    flex-direction: column;
-}
 
-.home .content .row .col-lg-8 .text .text-center {
-    margin-top:10rem;
-    margin-bottom: 3rem;
-}
-
-.home .content .row .col-lg-8 .text .text-center h1{
+.container .bg-image .text-center {
     color: #fff;
-    font-size: 3rem;
-    font-weight: bold;
-}
-.home .content .row .col-lg-8 .text .text-center p {
-    color: #fff;
-    font-size: 2rem;
-}
-
-.home .container {
-    width: 30rem;
-    background: #ff6f1a;
     font-size: 1.5rem;
-    color: #191919;
-    padding: 3rem;
-    border-radius: 1.5rem 1.5rem;
-    float: left;
-    margin-bottom: 10rem;
+    margin-top: 10rem;
 }
 
+.container .booking {
+    color: #011544;
+    background-color: #fe6e19;
+    /*margin-top: 25rem;*/
+    margin-top: -1rem;
+    padding: 2rem 2rem;
+    border-radius: 7rem 1rem;
+    font-size: 1.5rem;
+}
+.container .booking .form-group{
+    margin: .5rem;
+}
 
+.container .booking .form-group label{
+    font-size: 1.5rem;
+}
 
-.home .container .form-group .btn {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    width: 100%;
-    background-color: #1F487E;
-    color: #fff;
-    border-radius: 8px 8px;
+.container .service-wrap {
+    color: #011544;
+    background-color: #fff;
+    padding: 4rem 1rem;
+    /*margin-top: 30rem;*/
+    margin-top: 2rem;
+    margin-right: 3rem;
+    font-size: 1.8rem;
+}
+
+.container .service-wrap .services-info .text h3{
+    font-size: 1.2rem;
+    text-align: center;
     margin-top: 2rem;
 }
 
-.home .container .form-group .btn:hover {
-    text-decoration: none;
-    background-color: #1D3461;
-    color: #fff;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
