@@ -16,15 +16,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 /* Home page Styles */
 .container .bg-image {
     background-image: url('https://ev-database.org/img/auto/BMW_i4_M50/BMW_i4_M50-01@2x.jpg');
@@ -49,6 +40,7 @@
     /*border-radius: 7rem 1rem;*/
     border-radius: 1rem 7rem;
     font-size: 1.5rem;
+    
 }
 .container .booking .form-group{
     margin: .5rem;
@@ -75,9 +67,57 @@
 }
 
 
+.top_cars{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.top_cars .row .col-md-12 h2{
+    color: #011544;
+    font-size: 4rem;
+}
 
 
+.divider {
+    border: 1px solid #011544;
+}
 
+img {
+    width: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-img {
+    height: 200px; 
+}
+
+.card-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn-block {
+    width: 100%;
+}
 
 
 

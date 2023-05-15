@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<RideOn.Models.Car>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -116,6 +118,57 @@
                 </div>
             </div>
         </div>
+    </div>
+
+</div>
+
+@{
+    var random = new Random();
+    var cars = Model.OrderBy(x => random.Next()).Take(12).ToList();
+    var totalSlides = (int)Math.Ceiling(cars.Count / 4.0);
+}
+
+
+<div class="top_cars">
+    <div class="row text-center mb-3">
+        <div class="col-md-12">
+            <h2>Top Lists of Safest Car</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @for (int slideIndex = 0; slideIndex < totalSlides; slideIndex++)
+                {
+                    <div class="swiper-slide">
+                        <div class="row">
+                            @for (int i = slideIndex * 4; i < Math.Min((slideIndex + 1) * 4, cars.Count); i++)
+                            {
+                                var car = cars[i];
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-img"><img src="@car.Image" alt=""></div>
+                                        <div class="card-body">
+                                            <h5>@car.Make @car.Model</h5>
+                                            <h4 class="pt-1 pb-2">$ @car.DailyRate /day</h4>
+                                            <button type="button" class="btn btn-outline-danger btn-block btn-sm">Book it.</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
     </div>
 </div>
 
