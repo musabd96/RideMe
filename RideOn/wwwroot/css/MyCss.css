@@ -13,12 +13,11 @@
 
 
 
-
-
-
 /* Home page Styles */
 
+
 /* Carousel indicators */
+
 #myCarousel .carousel-indicators li {
     background-color: #6D6EA9;
 }
@@ -37,6 +36,9 @@
 }
 
 
+
+
+
 .container .bg-image .text-center {
     color: #fff;
     font-size: 1.5rem;
@@ -46,7 +48,7 @@
 .container .booking {
     color: #fff;
     background-color: #011544;
-    margin-top: -1rem;
+    margin-top: 1rem;
     padding: 2rem 2rem;
     border-radius: 1rem 7rem;
     font-size: 1.5rem;
@@ -64,7 +66,7 @@
     color: #011544;
     background-color: #fff;
     padding: 4rem 1rem;
-    margin-top: -2rem;
+    margin-top: 2rem;
     margin-right: 3rem;
     font-size: 1.8rem;
 }
@@ -75,9 +77,73 @@
     margin-top: 2rem;
 }
 
+.subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.centered-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 80px;
+}
+
+.car {
+    background: #fff;
+    margin-top: 6rem;
+}
+
+.car .titlepage {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.car .titlepage h2 {
+    color: #011544;
+}
+
+.car .titlepage span {
+    color: #23262d;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.padding_leri {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.car_box {
+    text-align: center;
+}
+
+.car_box figure {
+    margin: 0;
+}
+
+.car_box figure img {
+    width: 100%;
+}
+
+.car_box h3 {
+    color: #011544;
+    background-color: #f6d601;
+    font-size: 30px;
+    line-height: 28px;
+    height: 84px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding: 0;
+}
+
+
+
 
 .top_cars{
-    margin-top: 10rem;
+    margin-top: 5rem;
     margin-bottom: 10rem;
 }
 
@@ -91,8 +157,15 @@
     border: 1px solid #011544;
 }
 
+
+
+.titlepage {
+    text-align: center;
+    color: #011544;
+}
+
 img {
-    width: 100%;
+    width: 60%;
 }
 
 .swiper-container {
@@ -126,12 +199,32 @@ img {
 
 .btn-block {
     width: 100%;
+    background-color: #f6d601;
+    color: #011544;
+    padding: 1rem;
+    border-radius: 1rem 1rem;
+}
+
+.btn-block:hover{
+    background-color:#011544;
 }
 
 
 
 
+.card {
+    border: none;
+}
 
+.user-content p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+
+.ratings i {
+    color: blue;
+}
 
 
 
