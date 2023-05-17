@@ -11,4 +11,16 @@ var swiper = new Swiper('.swiper-container', {
     },
 });
 
+var swiper = new Swiper('.swiper-container', {
+    // Specify options here
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+
 

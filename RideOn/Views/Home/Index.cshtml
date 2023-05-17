@@ -5,19 +5,34 @@
 }
 
 <div class="container">
-    <div class="bg-image">
-        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
-        <div class="col-lg-8 ftco-animate">
-            <div class="text w-100 text-center mb-md-5 pb-md-5">
-                <div class="text-center">
-                    <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
-                    <p class="mb-4"> Great cars at affordable prices </p>
-                </div>
-                    
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" ></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://ev-database.org/img/auto/BMW_i4_M50/BMW_i4_M50-01@2x.jpg" class="d-block w-100" alt="Slide 1">
+               
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.squarespace-cdn.com/content/v1/5321d1c5e4b0747694d2b1f3/1439581353271-YDRBDP6BDUW6GX215GMB/image-asset.jpeg?format=1000w" class="d-block w-100" alt="Slide 3">
+                
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.enterprise.com/en/exotic-car-rental/_jcr_content/root/container/container/container_1060086341/teaser.coreimg.jpeg/1667428288820/explore-our-vehicles-1920x1080-vehicles.jpeg" class="d-block w-100" alt="Slide 2">
+                @*<div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Where every mile becomes a testament to style, comfort, and convenience. .</p>
+                </div>*@
             </div>
         </div>
     </div>
-    </div>
+
     <div class="row">
         <div class="col-lg-6">
             <div class="booking">
@@ -147,8 +162,8 @@
                             @for (int i = slideIndex * 4; i < Math.Min((slideIndex + 1) * 4, cars.Count); i++)
                             {
                                 var car = cars[i];
-                                <div class="col-md-3">
-                                    <div class="card">
+                                <div class="col-md-3 col-sm-3 col-3">
+                                    <div class="card h-100">
                                         <div class="card-img"><img src="@car.Image" alt=""></div>
                                         <div class="card-body">
                                             <h5>@car.Make @car.Model</h5>
@@ -173,7 +188,4 @@
 </div>
 
 	
-
-
-
 
