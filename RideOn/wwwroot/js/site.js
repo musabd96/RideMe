@@ -78,41 +78,61 @@ document.addEventListener("DOMContentLoaded", function () {
             pickupLocation.classList.remove("shake"); // Remove shake class if already added
             void pickupLocation.offsetWidth; // Trigger reflow to restart the animation
             pickupLocation.classList.add("shake");
+            pickupLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            dropoffLocation.style = "border: ";
         }
+
         if (dropoffLocation.value.trim() === "-Select City or Airport-") {
             dropoffLocation.classList.remove("shake");
             void dropoffLocation.offsetWidth;
             dropoffLocation.classList.add("shake");
+            dropoffLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            dropoffLocation.style = "border: ";
         }
 
         if (pickupDate.value.trim() === "") {
             pickupDate.classList.remove("shake");
             void pickupDate.offsetWidth;
             pickupDate.classList.add("shake");
+            pickupDate.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            pickupDate.style = "border: ";
         }
+            
 
         if (pickupTime.value.trim() === "") {
             pickupTime.classList.remove("shake");
             void pickupTime.offsetWidth;
             pickupTime.classList.add("shake");
+            pickupTime.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            pickupTime.style = "border: ";
         }
 
         if (returnDate.value.trim() === "") {
             returnDate.classList.remove("shake");
             void returnDate.offsetWidth;
             returnDate.classList.add("shake");
+            returnDate.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            returnDate.style = "border: ";
         }
 
         if (returnTime.value.trim() === "") {
             returnTime.classList.remove("shake");
             void returnTime.offsetWidth;
             returnTime.classList.add("shake");
+            returnTime.style = "border: 1px solid #ff0000";
             isEmptyField = true;
+        } else {
+            returnTime.style = "border: ";
         }
 
 
@@ -121,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return; 
         }
 
+        
         // Save the data to sessionStorage
         sessionStorage.setItem("pickupLocation", pickupLocation.value);
         sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
