@@ -170,6 +170,114 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    var bookNowButton = document.querySelector("#book-now-snp");
+    bookNowButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log('booknow')
+        let pickupLocation = document.getElementById("pickup-location-snp");
+        let dropoffLocation = document.getElementById("dropoff-location-snp");
+        let pickupDate = document.getElementById("pickup-date-snp");
+        let pickupTime = document.getElementById("pickup-time-snp");
+        let returnDate = document.getElementById("return-date-snp");
+        let returnTime = document.getElementById("return-time-snp");
+
+        let pickupdate = new Date(document.getElementById("pickup-date-snp").value);
+        let returndate = new Date(document.getElementById("return-date-snp").value);
+
+        if (pickupdate.getTime() && returndate.getTime()) {
+            let timeDifference = returndate.getTime() - pickupdate.getTime();
+
+            let daysBooking = timeDifference / (1000 * 3600 * 24);
+            console.log('daysBooking: ', daysBooking)
+            sessionStorage.setItem("daysBooking", daysBooking);
+        }
+
+
+
+
+        var isEmptyField = false;
+
+        if (pickupLocation.value.trim() === "-Select City or Airport-") {
+            pickupLocation.classList.remove("shake");
+            void pickupLocation.offsetWidth;
+            pickupLocation.classList.add("shake");
+            pickupLocation.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            dropoffLocation.style = "border: ";
+        }
+
+        if (dropoffLocation.value.trim() === "-Select City or Airport-") {
+            dropoffLocation.classList.remove("shake");
+            void dropoffLocation.offsetWidth;
+            dropoffLocation.classList.add("shake");
+            dropoffLocation.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            dropoffLocation.style = "border: ";
+        }
+
+        if (pickupDate.value.trim() === "") {
+            pickupDate.classList.remove("shake");
+            void pickupDate.offsetWidth;
+            pickupDate.classList.add("shake");
+            pickupDate.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            pickupDate.style = "border: ";
+        }
+
+
+        if (pickupTime.value.trim() === "") {
+            pickupTime.classList.remove("shake");
+            void pickupTime.offsetWidth;
+            pickupTime.classList.add("shake");
+            pickupTime.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            pickupTime.style = "border: ";
+        }
+
+        if (returnDate.value.trim() === "") {
+            returnDate.classList.remove("shake");
+            void returnDate.offsetWidth;
+            returnDate.classList.add("shake");
+            returnDate.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            returnDate.style = "border: ";
+        }
+
+        if (returnTime.value.trim() === "") {
+            returnTime.classList.remove("shake");
+            void returnTime.offsetWidth;
+            returnTime.classList.add("shake");
+            returnTime.style = "border: 1px solid #ff0000";
+            isEmptyField = true;
+        } else {
+            returnTime.style = "border: ";
+        }
+
+
+
+        if (isEmptyField) {
+            return;
+        }
+
+
+        // Save the data to sessionStorage
+        sessionStorage.setItem("pickupLocation", pickupLocation.value);
+        sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
+        sessionStorage.setItem("pickupDate", pickupDate.value);
+        sessionStorage.setItem("pickupTime", pickupTime.value);
+        sessionStorage.setItem("returnDate", returnDate.value);
+        sessionStorage.setItem("returnTime", returnTime.value);
+
+        // Navigate to the booking page
+        window.location.href = "booking";
+    });
+});
 
 
 
@@ -203,7 +311,7 @@ $(document).ready(function () {
     $('.booking-info').click(function () {
         var downArrow = $(this).find('.ri-arrow-down-s-line');
         var upArrow = $(this).find('.ri-arrow-up-s-line');
-
+        console.log('arrow')
         // Get the data from the booking-info div
         var pickupLocation = $(this).find('#pickup-location-display').text().trim();
         var dropoffLocation = $(this).find('#dropoff-location-display').text().trim();
@@ -270,3 +378,12 @@ totalAmountElement.forEach((element, index) => {
     const totalAmount = price * daysBooking;
     element.textContent = totalAmount.toFixed(2);
 });
+
+
+document.getElementById("open-popup-btn").addEventListener("click", function () {
+    document.querySelector(".popup-overlay").style.display = "flex";
+});
+
+//document.getElementById("close-popup-btn").addEventListener("click", function () {
+//    document.querySelector(".popup-overlay").style.display = "none";
+//});

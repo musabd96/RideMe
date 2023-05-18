@@ -203,7 +203,7 @@
                                         <div class="card-body">
                                             <h5>@car.Make @car.Model</h5>
                                             <h4 class="pt-1 pb-2">$ @car.DailyRate /day</h4>
-                                            <button type="button" class="btn btn-outline-danger btn-block btn-sm">Book it.</button>
+                                            <button type="button" class="btn btn-outline-danger btn-block btn-sm" id="open-popup-btn">Book it.</button>
                                         </div>
                                     </div>
                                 </div>
@@ -327,3 +327,72 @@
 
 </div>
 
+<div class="popup-overlay">
+    <div class="popup">
+        
+        <div class="booking ">
+            <div class="form-group">
+                <label for="pickup-location">Pick-up Location</label>
+                <select class="form-control" id="pickup-location-snp" placeholder="Select City or Airport">
+                    <option value="-Select City or Airport-">-Select City or Airport-</option>
+                    <option value="Stockholm">Stockholm</option>
+                    <option value="Gothenburg">Gothenburg</option>
+                    <option value="Malmö">Malmö</option>
+                    <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                    <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                </select>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="dropoff-location">Drop-off Location</label>
+                    <select class="form-control" id="dropoff-location-snp" placeholder="Select City or Airport">
+                        <option value="-Select City or Airport-">-Select City or Airport-</option>
+                        <option value="Stockholmn">Stockholmn</option>
+                        <option value="Gothenburg">Gothenburg</option>
+                        <option value="Malmö">Malmö</option>
+                        <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                        <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="pickup-date">Pick-up Date</label>
+                        <input type="date" class="form-control" id="pickup-date-snp">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="pickup-time">Time</label>
+                        <input type="time" class="form-control" id="pickup-time-snp">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="return-date">Return Date</label>
+                        <input type="date" class="form-control" id="return-date-snp">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="return-time">Time</label>
+                        <input type="time" class="form-control" id="return-time-snp">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <a class="btn btn-primary btn-block" id="book-now-snp">Book Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
