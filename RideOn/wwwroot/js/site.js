@@ -182,18 +182,18 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnDate = document.getElementById("return-date-snp");
         let returnTime = document.getElementById("return-time-snp");
 
+        
         let pickupdate = new Date(document.getElementById("pickup-date-snp").value);
         let returndate = new Date(document.getElementById("return-date-snp").value);
 
         if (pickupdate.getTime() && returndate.getTime()) {
             let timeDifference = returndate.getTime() - pickupdate.getTime();
-
             let daysBooking = timeDifference / (1000 * 3600 * 24);
             console.log('daysBooking: ', daysBooking)
             sessionStorage.setItem("daysBooking", daysBooking);
         }
 
-
+        
 
 
         var isEmptyField = false;
@@ -311,7 +311,6 @@ $(document).ready(function () {
     $('.booking-info').click(function () {
         var downArrow = $(this).find('.ri-arrow-down-s-line');
         var upArrow = $(this).find('.ri-arrow-up-s-line');
-        console.log('arrow')
         // Get the data from the booking-info div
         var pickupLocation = $(this).find('#pickup-location-display').text().trim();
         var dropoffLocation = $(this).find('#dropoff-location-display').text().trim();
@@ -320,6 +319,14 @@ $(document).ready(function () {
         var returnDate = $(this).find('#return-date-display').text().trim();
         var returnTime = $(this).find('#return-time-display').text().trim();
 
+        if (pickupLocation === "") {
+        
+            pickupLocation = "-Select City or Airport-"
+        }
+        if (dropoffLocation === "") {
+
+            dropoffLocation = "-Select City or Airport-"
+        }
         // Insert the data into the booking form
         $('#pickup-location').val(pickupLocation);
         $('#dropoff-location').val(dropoffLocation);
@@ -339,7 +346,6 @@ $(document).ready(function () {
         downArrow.toggle();
         upArrow.toggleClass('hidden');
         $('.booking').toggleClass('hidden');
-
         $('#return-date').prop('disabled', false);
     });
 
