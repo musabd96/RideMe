@@ -31,6 +31,73 @@
                 <span id="return-time-display">
                     dropoff-time
                 </span>
+                <i class="ri-arrow-down-s-line"></i>
+                <i class="ri-arrow-up-s-line hidden"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="booking hidden">
+    <div class="form-group">
+        <label for="pickup-location">Pick-up Location</label>
+        <select class="form-control" id="pickup-location" placeholder="Select City or Airport">
+            <option value="-Select City or Airport-">-Select City or Airport-</option>
+            <option value="Stockholm">Stockholm</option>
+            <option value="Gothenburg">Gothenburg</option>
+            <option value="Malmö">Malmö</option>
+            <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+            <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+        </select>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <label for="dropoff-location">Drop-off Location</label>
+            <select class="form-control" id="dropoff-location" placeholder="Select City or Airport">
+                <option value="-Select City or Airport-">-Select City or Airport-</option>
+                <option value="Stockholmn">Stockholmn</option>
+                <option value="Gothenburg">Gothenburg</option>
+                <option value="Malmö">Malmö</option>
+                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="pickup-date">Pick-up Date</label>
+                <input type="date" class="form-control" id="pickup-date">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="pickup-time">Time</label>
+                <input type="time" class="form-control" id="pickup-time">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="return-date">Return Date</label>
+                <input type="date" class="form-control" id="return-date">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="return-time">Time</label>
+                <input type="time" class="form-control" id="return-time">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <a class="btn btn-primary btn-block" id="book-now-btn">Book Now!</a>
             </div>
         </div>
     </div>

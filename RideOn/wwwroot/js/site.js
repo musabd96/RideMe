@@ -185,3 +185,63 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear the stored data from sessionStorage
     sessionStorage.clear();
 });
+
+
+$(document).ready(function () {
+    $('.booking-info').click(function () {
+        var downArrow = $(this).find('.ri-arrow-down-s-line');
+        var upArrow = $(this).find('.ri-arrow-up-s-line');
+
+        // Get the data from the booking-info div
+        var pickupLocation = $(this).find('#pickup-location-display').text().trim();
+        var dropoffLocation = $(this).find('#dropoff-location-display').text().trim();
+        var pickupDate = $(this).find('#pickup-date-display').text().trim();
+        var pickupTime = $(this).find('#pickup-time-display').text().trim();
+        var returnDate = $(this).find('#return-date-display').text().trim();
+        var returnTime = $(this).find('#return-time-display').text().trim();
+
+        // Insert the data into the booking form
+        $('#pickup-location').val(pickupLocation);
+        $('#dropoff-location').val(dropoffLocation);
+        $('#pickup-date').val(pickupDate);
+        $('#pickup-time').val(pickupTime);
+        $('#return-date').val(returnDate);
+        $('#return-time').val(returnTime);
+
+        // Save the data in local session storage
+        sessionStorage.setItem("pickupLocation", pickupLocation);
+        sessionStorage.setItem("dropoffLocation", dropoffLocation);
+        sessionStorage.setItem("pickupDate", pickupDate);
+        sessionStorage.setItem("pickupTime", pickupTime);
+        sessionStorage.setItem("returnDate", returnDate);
+        sessionStorage.setItem("returnTime", returnTime);
+
+        downArrow.toggle();
+        upArrow.toggleClass('hidden');
+        $('.booking').toggleClass('hidden');
+
+        $('#return-date').prop('disabled', false);
+    });
+
+    // Check if there is saved data in local session storage
+    if (sessionStorage.getItem("pickupLocation")) {
+        // Retrieve the data from local session storage
+        var pickupLocation = sessionStorage.getItem("pickupLocation");
+        var dropoffLocation = sessionStorage.getItem("dropoffLocation");
+        var pickupDate = sessionStorage.getItem("pickupDate");
+        var pickupTime = sessionStorage.getItem("pickupTime");
+        var returnDate = sessionStorage.getItem("returnDate");
+        var returnTime = sessionStorage.getItem("returnTime");
+
+        // Insert the data into the booking form
+        $('#pickup-location').val(pickupLocation);
+        $('#dropoff-location').val(dropoffLocation);
+        $('#pickup-date').val(pickupDate);
+        $('#pickup-time').val(pickupTime);
+        $('#return-date').val(returnDate);
+        $('#return-time').val(returnTime);
+    }
+});
+
+
+

@@ -54,6 +54,12 @@
     font-size: 1.5rem;
     
 }
+
+.container .booking.hidden{
+    display:none;
+}
+
+
 .container .booking .form-group{
     margin: .5rem;
 }
@@ -263,40 +269,6 @@ img {
 
 
 
-.booking-form {
-    background-color: #f6d601;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    justify-content: center;
-}
-
-
-
-span {
-    color: #011544;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-    #pickup-location,
-    #pickup-date,
-    #pickup-time,
-    #dropoff-location,
-    #dropoff-date,
-    #dropoff-time {
-        padding: 5px 10px;
-        border-radius: 10rem;
-    }
-
-    span:not(:last-child) {
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-
 
 
 
@@ -316,6 +288,53 @@ span {
 
 
 /* Booking page Styles */
+
+.booking-form {
+    background-color: #f6d601;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+span {
+    color: #011544;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.ri-arrow-down-s-line,
+.ri-arrow-up-s-line {
+    font-size: 3rem;
+}
+
+
+.ri-arrow-down-s-line.hidden,
+.ri-arrow-up-s-line.hidden{
+    display:none;
+}
+
+#pickup-location,
+#pickup-date,
+#pickup-time,
+#dropoff-location,
+#dropoff-date,
+#dropoff-time {
+    padding: 5px 10px;
+    border-radius: 10rem;
+}
+
+span:not(:last-child) {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+
 body {
     font-family: Varela Round;
     background: #f1f1f1;
