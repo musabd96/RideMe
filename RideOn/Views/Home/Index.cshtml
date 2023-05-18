@@ -32,12 +32,14 @@
         </div>
     </div>
 
+   
+
     <div class="row">
         <div class="col-lg-6">
             <div class="booking">
                 <div class="form-group">
                     <label for="pickup-location">Pick-up Location</label>
-                    <select class="form-control" id="dropoff-location" placeholder="Select City or Airport">
+                    <select class="form-control" id="pickup-location" placeholder="Select City or Airport">
                         <option value="-Select City or Airport-">-Select City or Airport-</option>
                         <option value="Stockholm">Stockholm</option>
                         <option value="Gothenburg">Gothenburg</option>
@@ -49,7 +51,7 @@
                  <div class="col">
                     <div class="form-group">
                         <label for="dropoff-location">Drop-off Location</label>
-                        <select class="form-control" id="pickup-location" placeholder="Select City or Airport">
+                        <select class="form-control" id="dropoff-location" placeholder="Select City or Airport">
                             <option value="-Select City or Airport-">-Select City or Airport-</option>
                             <option value="Stockholmn">Stockholmn</option>
                             <option value="Gothenburg">Gothenburg</option>
@@ -93,7 +95,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <a class="btn btn-primary btn-block" asp-area="" asp-controller="Booking" asp-action="Index">Book Now!</a>
+                            <a class="btn btn-primary btn-block" id="book-now-btn" >Book Now!</a>
                         </div>
                     </div>
                 </div>

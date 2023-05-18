@@ -3,8 +3,40 @@
 @{
     ViewData["Title"] = "Booking";
 }
+<div class="booking-info" id="selected-data-dropdown">
+    <div class="booking-form">
+        <div class="row">
+            <div class="column">
+                <span id="pickup-location-display">
+                    pickup-location
+                </span>
+                <span>
+                    |
+                </span>
+                <span id="dropoff-location-display">
+                    dropoff-location
+                </span>
+                <span id="pickup-date-display">
+                    pickup-date
+                </span>
+                <span id="pickup-time-display">
+                    pickup-time
+                </span>
+                <span>
+                    -
+                </span>
+                <span id="return-date-display">
+                    dropoff-date
+                </span>
+                <span id="return-time-display">
+                    dropoff-time
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2 class="my-4">Booking</h2>
+<h2 class="my-4">Select a car</h2>
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
