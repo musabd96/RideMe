@@ -58,9 +58,43 @@
     margin: .5rem;
 }
 
+
+
 .container .booking .form-group label{
     font-size: 1.5rem;
 }
+
+
+
+.shake {
+    animation: shake 0.3s ease-in-out;
+    border: 1px solid #ff0000
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
 
 .container .service-wrap {
     color: #011544;
@@ -262,35 +296,6 @@ span {
         margin-right: 5px;
         margin-left: 5px;
     }
-
-
-
-.shake {
-    animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-    0% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-5px);
-    }
-
-    50% {
-        transform: translateX(5px);
-    }
-
-    75% {
-        transform: translateX(-5px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
 
 
 

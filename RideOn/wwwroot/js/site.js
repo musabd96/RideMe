@@ -21,6 +21,43 @@ var swiper = new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev',
     },
 });
+
+// BOOKING FORM
+
+// Get today's date
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+// Set the minimum value for the "Pick-up Date" input field
+var pickupDateInput = document.getElementById('pickup-date');
+pickupDateInput.min = yyyy + '-' + mm + '-' + dd;
+
+// Set the initial value for the "Return Date" input field to be disabled
+var returnDateInput = document.getElementById('return-date');
+returnDateInput.disabled = true;
+
+// Open the date picker when clicking on the "Pick-up Date" input field
+pickupDateInput.addEventListener('click', function () {
+    this.focus();
+});
+
+// Enable the "Return Date" input field when a pick-up date is chosen
+pickupDateInput.addEventListener('change', function () {
+    var selectedDate = new Date(this.value);
+    selectedDate.setDate(selectedDate.getDate() + 1);
+
+    var returnYear = selectedDate.getFullYear();
+    var returnMonth = String(selectedDate.getMonth() + 1).padStart(2, '0');
+    var returnDay = String(selectedDate.getDate()).padStart(2, '0');
+    var returnDateValue = returnYear + '-' + returnMonth + '-' + returnDay;
+
+    returnDateInput.disabled = false;
+    returnDateInput.min = returnDateValue;
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     var bookNowButton = document.querySelector("#book-now-btn");
     bookNowButton.addEventListener("click", function (event) {
