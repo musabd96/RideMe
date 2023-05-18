@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var bookNowButton = document.querySelector("#book-now-snp");
     bookNowButton.addEventListener("click", function (event) {
         event.preventDefault();
-        console.log('booknow')
+        
         let pickupLocation = document.getElementById("pickup-location-snp");
         let dropoffLocation = document.getElementById("dropoff-location-snp");
         let pickupDate = document.getElementById("pickup-date-snp");
@@ -380,10 +380,18 @@ totalAmountElement.forEach((element, index) => {
 });
 
 
-document.getElementById("open-popup-btn").addEventListener("click", function () {
-    document.querySelector(".popup-overlay").style.display = "flex";
+// Select all elements with the class "open-popup-btn"
+var buttons = document.querySelectorAll(".open-popup-btn");
+
+// Add the click event listener to each button
+buttons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+        document.querySelector(".popup-overlay").style.display = "flex";
+    });
 });
 
-//document.getElementById("close-popup-btn").addEventListener("click", function () {
-//    document.querySelector(".popup-overlay").style.display = "none";
-//});
+
+document.getElementById("close-popup-btn").addEventListener("click", function () {
+   document.querySelector(".popup-overlay").style.display = "none";
+});

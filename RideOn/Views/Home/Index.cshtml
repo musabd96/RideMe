@@ -203,7 +203,7 @@
                                         <div class="card-body">
                                             <h5>@car.Make @car.Model</h5>
                                             <h4 class="pt-1 pb-2">$ @car.DailyRate /day</h4>
-                                            <button type="button" class="btn btn-outline-danger btn-block btn-sm" id="open-popup-btn">Book it.</button>
+                                            <button type="button" class="btn btn-outline-danger btn-block btn-sm open-popup-btn">Book it.</button>
                                         </div>
                                     </div>
                                 </div>
@@ -329,7 +329,7 @@
 
 <div class="popup-overlay">
     <div class="popup">
-        
+        <i class="ri-close-line close-button" id="close-popup-btn"></i>
         <div class="booking ">
             <div class="form-group">
                 <label for="pickup-location">Pick-up Location</label>

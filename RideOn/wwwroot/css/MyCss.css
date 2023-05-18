@@ -289,8 +289,22 @@ img {
 }
 
 .popup {
+    position: relative;
     padding: 20px;
     border-radius: 5px;
+}
+.close-button {
+    position: absolute;
+    top: 3rem;
+    right: 5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.close-button:hover{
+    color: red;
+
 }
 
 .popup.hidden {
