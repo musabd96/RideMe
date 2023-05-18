@@ -65,20 +65,32 @@ document.addEventListener("DOMContentLoaded", function () {
     bookNowButton.addEventListener("click", function (event) {
         event.preventDefault();
 
-        var pickupLocation = document.getElementById("pickup-location");
-        var dropoffLocation = document.getElementById("dropoff-location");
-        var pickupDate = document.getElementById("pickup-date");
-        var pickupTime = document.getElementById("pickup-time");
-        var returnDate = document.getElementById("return-date");
-        var returnTime = document.getElementById("return-time");
+        let pickupLocation = document.getElementById("pickup-location");
+        let dropoffLocation = document.getElementById("dropoff-location");
+        let pickupDate = document.getElementById("pickup-date");
+        let pickupTime = document.getElementById("pickup-time");
+        let returnDate = document.getElementById("return-date");
+        let returnTime = document.getElementById("return-time");
 
+        let pickupdate = new Date(document.getElementById("pickup-date").value);
+        let returndate = new Date(document.getElementById("return-date").value);
+        
+        if (pickupdate.getTime() && returndate.getTime()) {
+            let timeDifference = returndate.getTime() - pickupdate.getTime();
 
-        // Validate the form fields
+            let daysBooking = timeDifference / (1000 * 3600 * 24);
+            console.log('daysBooking: ', daysBooking)
+            sessionStorage.setItem("daysBooking", daysBooking);
+        }
+           
+       
+        
+
         var isEmptyField = false;
 
         if (pickupLocation.value.trim() === "-Select City or Airport-") {
-            pickupLocation.classList.remove("shake"); // Remove shake class if already added
-            void pickupLocation.offsetWidth; // Trigger reflow to restart the animation
+            pickupLocation.classList.remove("shake"); 
+            void pickupLocation.offsetWidth; 
             pickupLocation.classList.add("shake");
             pickupLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
@@ -170,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var returnDate = sessionStorage.getItem("returnDate");
     var returnTime = sessionStorage.getItem("returnTime");
 
-    console.log(dropoffLocation)
+    
 
     // Update the displayed values in the dropdown div
     document.getElementById("pickup-location-display").innerText = pickupLocation;
@@ -244,4 +256,17 @@ $(document).ready(function () {
 });
 
 
+console.log(sessionStorage.getItem("daysBooking"));
 
+const totalAmountElement = document.querySelectorAll('.total-amount');
+const priceElements = document.querySelectorAll('.card-price');
+
+// Assuming you have the daysBooking value stored in a variable
+const daysBooking = sessionStorage.getItem('daysBooking');
+
+// Loop through each card element and update the total amount
+totalAmountElement.forEach((element, index) => {
+    const price = parseFloat(priceElements[index].textContent);
+    const totalAmount = price * daysBooking;
+    element.textContent = totalAmount.toFixed(2);
+});
