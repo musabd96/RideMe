@@ -24,39 +24,41 @@ var swiper = new Swiper('.swiper-container', {
 
 // BOOKING FORM
 
-// Get today's date
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0');
-var yyyy = today.getFullYear();
+document.addEventListener('DOMContentLoaded', function () {
+    // Get today's date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
 
-// Set the minimum value for the "Pick-up Date" input field
-var pickupDateInput = document.getElementById('pickup-date');
-pickupDateInput.min = yyyy + '-' + mm + '-' + dd;
+    // Set the minimum value for the "Pick-up Date" input field
+    var pickupDateInput = document.getElementById('pickup-date');
+    pickupDateInput.min = yyyy + '-' + mm + '-' + dd;
 
-// Set the initial value for the "Return Date" input field to be disabled
-var returnDateInput = document.getElementById('return-date');
-returnDateInput.disabled = true;
+    // Set the initial value for the "Return Date" input field to be disabled
+    var returnDateInput = document.getElementById('return-date');
+    returnDateInput.disabled = true;
 
-// Open the date picker when clicking on the "Pick-up Date" input field
-pickupDateInput.addEventListener('click', function () {
-    this.focus();
+    // Open the date picker when clicking on the "Pick-up Date" input field
+    pickupDateInput.addEventListener('click', function () {
+        this.focus();
+    });
+
+    // Enable the "Return Date" input field when a pick-up date is chosen
+    pickupDateInput.addEventListener('change', function () {
+        var selectedDate = new Date(this.value);
+        selectedDate.setDate(selectedDate.getDate() + 1);
+
+        var returnYear = selectedDate.getFullYear();
+        var returnMonth = String(selectedDate.getMonth() + 1).padStart(2, '0');
+        var returnDay = String(selectedDate.getDate()).padStart(2, '0');
+        var returnDateValue = returnYear + '-' + returnMonth + '-' + returnDay;
+
+        returnDateInput.disabled = false;
+        returnDateInput.min = returnDateValue;
+    });
+
 });
-
-// Enable the "Return Date" input field when a pick-up date is chosen
-pickupDateInput.addEventListener('change', function () {
-    var selectedDate = new Date(this.value);
-    selectedDate.setDate(selectedDate.getDate() + 1);
-
-    var returnYear = selectedDate.getFullYear();
-    var returnMonth = String(selectedDate.getMonth() + 1).padStart(2, '0');
-    var returnDay = String(selectedDate.getDate()).padStart(2, '0');
-    var returnDateValue = returnYear + '-' + returnMonth + '-' + returnDay;
-
-    returnDateInput.disabled = false;
-    returnDateInput.min = returnDateValue;
-});
-
 
 document.addEventListener("DOMContentLoaded", function () {
     var bookNowButton = document.querySelector("#book-now-btn");
@@ -160,12 +162,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the stored data from sessionStorage
     var pickupLocation = sessionStorage.getItem("pickupLocation");
     var dropoffLocation = sessionStorage.getItem("dropoffLocation");
     var pickupDate = sessionStorage.getItem("pickupDate");
     var pickupTime = sessionStorage.getItem("pickupTime");
     var returnDate = sessionStorage.getItem("returnDate");
     var returnTime = sessionStorage.getItem("returnTime");
+
+    console.log(dropoffLocation)
 
     // Update the displayed values in the dropdown div
     document.getElementById("pickup-location-display").innerText = pickupLocation;
@@ -175,9 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("return-date-display").innerText = returnDate;
     document.getElementById("return-time-display").innerText = returnTime;
 
-    // Show the dropdown div
-    var dropdownDiv = document.getElementById("selected-data-dropdown");
-    dropdownDiv.style.display = "block";
+   
 
     // Clear the stored data from sessionStorage
     sessionStorage.clear();
