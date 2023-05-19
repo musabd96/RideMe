@@ -323,8 +323,6 @@ img {
     justify-content: center;
 }
 
-.booking-form{
-}
 
 span {
     color: #011544;
@@ -380,6 +378,7 @@ a {
 .card-sl:hover {
     box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     transform: scale(1.05);
+    z-index: 1;
 }
 
 .card-image {
@@ -402,7 +401,7 @@ a {
     float: right;
     margin-top: -25px;
     margin-right: 20px;
-    z-index: 2;
+    z-index: 10;
     color: #E26D5C;
     background: #fff;
     border-radius: 100%;
