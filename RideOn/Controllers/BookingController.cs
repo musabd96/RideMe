@@ -37,6 +37,13 @@ namespace RideOn.Controllers
 
             return View(car);
         }
-    }
+        public ActionResult ReviewAndBook()
+        {
+            // Your logic to prepare data for the view
 
+            return View("ReviewAndBook");
+        }
+    }
 }
+
+    
