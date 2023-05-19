@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RideOn.Models.Car>
+﻿@model RideOn.Models.Car
 
 @{
     ViewData["Title"] = "ReviewAndBook";
@@ -13,27 +13,27 @@
             <div class="col-lg-7 pb-5 pe-lg-5">
                 <div class="row">
                     <div class="col-12 p-5">
-                        <img src="https://www.freepnglogos.com/uploads/honda-car-png/honda-car-upcoming-new-honda-cars-india-new-honda-3.png"
-                            alt="">
+                        <img src="@Html.DisplayFor(model => model.Image)" alt="Image">
+
                     </div>
                     <div class="row m-0 bg-light d-flex">
                         <div class="car-info col-md-12 d-flex justify-content-between align-items-center">
                             <div>
-                            <i class="ri-group-line"> 5 Seat</i>
+                                <i class="ri-group-line"> @Html.DisplayFor(model => model.Seat) Seat</i>
 
                             </div>
                             <div>
-                            <img src="~/images/carDoor.png" style="height:.9rem; width:.9rem;" /> 5 Doors
+                                <img src="~/images/carDoor.png" style="height:.9rem; width:.9rem;" /> @Html.DisplayFor(model => model.Doors) Doors
                             </div>
                             <div>
-                            <img src="~/images/manual-transmission.png" style="height:.9rem; width:.9rem;" /> Manually shifted
+                                <img src="~/images/manual-transmission.png" style="height:.9rem; width:.9rem;" /> @Html.DisplayFor(model => model.Shift)
                             </div>
                             <div>
-                            <img src="~/images/ac.png" style="height:.9rem; width:.9rem;" /> AC
+                                <img src="~/images/ac.png" style="height:.9rem; width:.9rem;" /> AC
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
 
 
@@ -43,9 +43,14 @@
                 <div class="row m-0">
                     <div class="col-12 px-4">
                         <div class="d-flex align-items-end mt-4 mb-2">
-                            <p class="h4 m-0"><span class="pe-1">ZAZ</span><span class="pe-1">966</span><span
-                                    class="pe-1">B</span></p>
-                            <P class="ps-3 textmuted">1L</P>
+                            <p class="h4 m-0">
+                                <span class="pe-1">
+                                    @Html.DisplayFor(model => model.Make)
+                                </span>
+                                <span class="pe-1">
+                                    @Html.DisplayFor(model => model.Model)
+                                </span>
+                            </p>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <p class="textmuted">Rental period</p>
@@ -59,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-12 px-0">
-                      
+
                         <div class="row m-0">
                             <div class="col-12  mb-4 p-0">
                                 <div class="btn btn-payment">
