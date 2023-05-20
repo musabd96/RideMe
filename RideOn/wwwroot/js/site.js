@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
    
 
     // Clear the stored data from sessionStorage
-    sessionStorage.clear();
+    //sessionStorage.clear();
 });
 
 
@@ -369,8 +369,9 @@ $(document).ready(function () {
     }
 });
 
-
 console.log(sessionStorage.getItem("daysBooking"));
+
+
 
 const totalAmountElement = document.querySelectorAll('.total-amount');
 const priceElements = document.querySelectorAll('.card-price');
@@ -385,6 +386,18 @@ totalAmountElement.forEach((element, index) => {
     element.textContent = totalAmount.toFixed(2);
 });
 
+
+// Retrieve the daysBooking value from localStorage
+let rentDays = parseInt(sessionStorage.getItem("daysBooking"));
+document.getElementById("rent-days").textContent = (rentDays + ' Days');
+let price = parseFloat(document.getElementById("total").textContent);
+let total = price * rentDays;
+
+console.log(rentDays)
+document.getElementById("total").textContent = ('$ '+ total + ',00');
+
+
+console.log(sessionStorage.getItem("daysBooking"));
 
 // Select all elements with the class "open-popup-btn"
 var buttons = document.querySelectorAll(".open-popup-btn");
@@ -401,3 +414,4 @@ buttons.forEach(function (button) {
 document.getElementById("close-popup-btn").addEventListener("click", function () {
    document.querySelector(".popup-overlay").style.display = "none";
 });
+

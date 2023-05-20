@@ -54,12 +54,12 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <p class="textmuted">Rental period</p>
-                            <p class="fs-14 fw-bold">1</p>
+                            <p class="fs-3 fw-bold" id="rent-days">1</p>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <p class="textmuted fw-bold">Total</p>
                             <div class="d-flex align-text-top ">
-                                <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4">1,350</span>
+                                <span class="h4" id="total">@Html.DisplayFor(model => model.DailyRate)</span>
                             </div>
                         </div>
                     </div>
