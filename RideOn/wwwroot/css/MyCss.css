@@ -346,10 +346,10 @@ span {
 #pickup-date,
 #pickup-time,
 #dropoff-location,
-#dropoff-date,
-#dropoff-time {
-    padding: 5px 10px;
-    border-radius: 10rem;
+#return-date,
+#return-time {
+    padding: 10px 20px;
+    font-size:1.5rem;
 }
 
 span:not(:last-child) {

@@ -4,6 +4,7 @@
 // Write your JavaScript code.
 
 
+
 var swiper = new Swiper('.swiper-container', {
     navigation: {
         nextEl: '.swiper-button-next',
@@ -60,13 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     var bookNowButton = document.querySelector("#book-now-btn");
     bookNowButton.addEventListener("click", function (event) {
         event.preventDefault();
 
         let pickupLocation = document.getElementById("pickup-location");
-        let dropoffLocation = document.getElementById("dropoff-location");
+        //let dropoffLocation = document.getElementById("dropoff-location");
         let pickupDate = document.getElementById("pickup-date");
         let pickupTime = document.getElementById("pickup-time");
         let returnDate = document.getElementById("return-date");
@@ -95,18 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
             pickupLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
         } else {
-            dropoffLocation.style = "border: ";
+            //dropoffLocation.style = "border: ";
         }
 
-        if (dropoffLocation.value.trim() === "-Select City or Airport-") {
-            dropoffLocation.classList.remove("shake");
-            void dropoffLocation.offsetWidth;
-            dropoffLocation.classList.add("shake");
-            dropoffLocation.style = "border: 1px solid #ff0000";
-            isEmptyField = true;
-        } else {
-            dropoffLocation.style = "border: ";
-        }
+        //if (dropoffLocation.value.trim() === "-Select City or Airport-") {
+        //    dropoffLocation.classList.remove("shake");
+        //    void dropoffLocation.offsetWidth;
+        //    dropoffLocation.classList.add("shake");
+        //    dropoffLocation.style = "border: 1px solid #ff0000";
+        //    isEmptyField = true;
+        //} else {
+        //    dropoffLocation.style = "border: ";
+        //}
 
         if (pickupDate.value.trim() === "") {
             pickupDate.classList.remove("shake");
@@ -158,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Save the data to sessionStorage
         sessionStorage.setItem("pickupLocation", pickupLocation.value);
-        sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
+        //sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
         sessionStorage.setItem("pickupDate", pickupDate.value);
         sessionStorage.setItem("pickupTime", pickupTime.value);
         sessionStorage.setItem("returnDate", returnDate.value);
@@ -174,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var bookNowButton = document.querySelector("#book-now-snp");
     bookNowButton.addEventListener("click", function (event) {
         event.preventDefault();
-        
+        console.log('paaaa')
         let pickupLocation = document.getElementById("pickup-location-snp");
-        let dropoffLocation = document.getElementById("dropoff-location-snp");
+        //let dropoffLocation = document.getElementById("dropoff-location-snp");
         let pickupDate = document.getElementById("pickup-date-snp");
         let pickupTime = document.getElementById("pickup-time-snp");
         let returnDate = document.getElementById("return-date-snp");
@@ -205,18 +208,18 @@ document.addEventListener("DOMContentLoaded", function () {
             pickupLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
         } else {
-            dropoffLocation.style = "border: ";
+            //dropoffLocation.style = "border: ";
         }
 
-        if (dropoffLocation.value.trim() === "-Select City or Airport-") {
-            dropoffLocation.classList.remove("shake");
-            void dropoffLocation.offsetWidth;
-            dropoffLocation.classList.add("shake");
-            dropoffLocation.style = "border: 1px solid #ff0000";
-            isEmptyField = true;
-        } else {
-            dropoffLocation.style = "border: ";
-        }
+        //if (dropoffLocation.value.trim() === "-Select City or Airport-") {
+        //    dropoffLocation.classList.remove("shake");
+        //    void dropoffLocation.offsetWidth;
+        //    dropoffLocation.classList.add("shake");
+        //    dropoffLocation.style = "border: 1px solid #ff0000";
+        //    isEmptyField = true;
+        //} else {
+        //    dropoffLocation.style = "border: ";
+        //}
 
         if (pickupDate.value.trim() === "") {
             pickupDate.classList.remove("shake");
@@ -268,23 +271,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save the data to sessionStorage
         sessionStorage.setItem("pickupLocation", pickupLocation.value);
-        sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
+        //sessionStorage.setItem("dropoffLocation", dropoffLocation.value);
         sessionStorage.setItem("pickupDate", pickupDate.value);
         sessionStorage.setItem("pickupTime", pickupTime.value);
         sessionStorage.setItem("returnDate", returnDate.value);
         sessionStorage.setItem("returnTime", returnTime.value);
-
+        var carId = sessionStorage.getItem("selectedCarId", carId);
+        alert(carId)
         // Navigate to the booking page
-        window.location.href = "booking";
+        window.location.href = "booking/Details/"+ carId;
     });
 });
+
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve the stored data from sessionStorage
     var pickupLocation = sessionStorage.getItem("pickupLocation");
-    var dropoffLocation = sessionStorage.getItem("dropoffLocation");
+    //var dropoffLocation = sessionStorage.getItem("dropoffLocation");
     var pickupDate = sessionStorage.getItem("pickupDate");
     var pickupTime = sessionStorage.getItem("pickupTime");
     var returnDate = sessionStorage.getItem("returnDate");
@@ -294,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update the displayed values in the dropdown div
     document.getElementById("pickup-location-display").innerText = pickupLocation;
-    document.getElementById("dropoff-location-display").innerText = dropoffLocation;
+    //document.getElementById("dropoff-location-display").innerText = dropoffLocation;
     document.getElementById("pickup-date-display").innerText = pickupDate;
     document.getElementById("pickup-time-display").innerText = pickupTime;
     document.getElementById("return-date-display").innerText = returnDate;
@@ -313,7 +318,7 @@ $(document).ready(function () {
         var upArrow = $(this).find('.ri-arrow-up-s-line');
         // Get the data from the booking-info div
         var pickupLocation = $(this).find('#pickup-location-display').text().trim();
-        var dropoffLocation = $(this).find('#dropoff-location-display').text().trim();
+        //var dropoffLocation = $(this).find('#dropoff-location-display').text().trim();
         var pickupDate = $(this).find('#pickup-date-display').text().trim();
         var pickupTime = $(this).find('#pickup-time-display').text().trim();
         var returnDate = $(this).find('#return-date-display').text().trim();
@@ -329,7 +334,7 @@ $(document).ready(function () {
         }
         // Insert the data into the booking form
         $('#pickup-location').val(pickupLocation);
-        $('#dropoff-location').val(dropoffLocation);
+        //$('#dropoff-location').val(dropoffLocation);
         $('#pickup-date').val(pickupDate);
         $('#pickup-time').val(pickupTime);
         $('#return-date').val(returnDate);
@@ -337,7 +342,7 @@ $(document).ready(function () {
 
         // Save the data in local session storage
         sessionStorage.setItem("pickupLocation", pickupLocation);
-        sessionStorage.setItem("dropoffLocation", dropoffLocation);
+        //sessionStorage.setItem("dropoffLocation", dropoffLocation);
         sessionStorage.setItem("pickupDate", pickupDate);
         sessionStorage.setItem("pickupTime", pickupTime);
         sessionStorage.setItem("returnDate", returnDate);
@@ -369,6 +374,8 @@ $(document).ready(function () {
     }
 });
 
+
+
 console.log(sessionStorage.getItem("daysBooking"));
 
 
@@ -387,31 +394,42 @@ totalAmountElement.forEach((element, index) => {
 });
 
 
-// Retrieve the daysBooking value from localStorage
-let rentDays = parseInt(sessionStorage.getItem("daysBooking"));
-document.getElementById("rent-days").textContent = (rentDays + ' Days');
-let price = parseFloat(document.getElementById("total").textContent);
-let total = price * rentDays;
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the daysBooking value from localStorage
+    let rentDays = parseInt(sessionStorage.getItem("daysBooking"));
+    document.getElementById("rent-days").textContent = rentDays + " Days";
+    let price = parseFloat(document.getElementById("total").textContent);
+    let total = price * rentDays;
 
-console.log(rentDays)
-document.getElementById("total").textContent = ('$ '+ total + ',00');
+    console.log(rentDays);
+    document.getElementById("total").textContent = "$" + total + ",00";
 
-
-console.log(sessionStorage.getItem("daysBooking"));
+});
 
 // Select all elements with the class "open-popup-btn"
-var buttons = document.querySelectorAll(".open-popup-btn");
+var buttons = document.querySelectorAll(".open-popup");
 
 // Add the click event listener to each button
 buttons.forEach(function (button) {
-
     button.addEventListener("click", function () {
+        // Retrieve car details from the clicked button
+        var carId = button.getAttribute("data-id");
+        var carMakeModel = button.getAttribute("data-car");
+        var dailyRate = parseFloat(button.getAttribute("data-daily-rate"));
+
+        // Store car details in session storage
+        sessionStorage.setItem("selectedCarId", carId);
+        sessionStorage.setItem("selectedCar", carMakeModel);
+        sessionStorage.setItem("dailyRate", dailyRate);
+        console.log(carId)
+        alert(carId)
+        // Display the popup overlay
         document.querySelector(".popup-overlay").style.display = "flex";
     });
 });
 
 
 document.getElementById("close-popup-btn").addEventListener("click", function () {
-   document.querySelector(".popup-overlay").style.display = "none";
+    document.querySelector(".popup-overlay").style.display = "none";
+   
 });
-

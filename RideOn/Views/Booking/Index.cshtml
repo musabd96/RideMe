@@ -13,9 +13,7 @@
                 <span>
                     |
                 </span>
-                <span id="dropoff-location-display">
-                    dropoff-location
-                </span>
+                
                 <span id="pickup-date-display">
                     pickup-date
                 </span>
@@ -52,19 +50,7 @@
             <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
         </select>
     </div>
-    <div class="col">
-        <div class="form-group">
-            <label for="dropoff-location">Drop-off Location</label>
-            <select class="form-control" id="dropoff-location" placeholder="Select City or Airport">
-                <option value="-Select City or Airport-">-Select City or Airport-</option>
-                <option value="Stockholmn">Stockholmn</option>
-                <option value="Gothenburg">Gothenburg</option>
-                <option value="Malmö">Malmö</option>
-                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
-                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
-            </select>
-        </div>
-    </div>
+   
 
     <div class="row">
         <div class="col">
@@ -133,7 +119,7 @@
                     </div>
 
                     <div class="card-btn">
-                        <a asp-controller="Booking" asp-action="Details" asp-route-id="@car.Id" class="card-button" id="BookNow">Book Now!</a>
+                        <a asp-controller="Booking" asp-action="Details" asp-route-id="@car.Id" class="card-button" id="BookNow">Search</a>
                     </div>
 
                 </div>
