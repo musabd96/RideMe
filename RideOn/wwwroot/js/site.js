@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sessionStorage.setItem("returnDate", returnDate.value);
         sessionStorage.setItem("returnTime", returnTime.value);
         var carId = sessionStorage.getItem("selectedCarId", carId);
-        alert(carId)
+       
         // Navigate to the booking page
         window.location.href = "booking/Details/"+ carId;
     });
@@ -376,7 +376,6 @@ $(document).ready(function () {
 
 
 
-console.log(sessionStorage.getItem("daysBooking"));
 
 
 
@@ -400,8 +399,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("rent-days").textContent = rentDays + " Days";
     let price = parseFloat(document.getElementById("total").textContent);
     let total = price * rentDays;
-
-    console.log(rentDays);
     document.getElementById("total").textContent = "$" + total + ",00";
 
 });
@@ -421,8 +418,6 @@ buttons.forEach(function (button) {
         sessionStorage.setItem("selectedCarId", carId);
         sessionStorage.setItem("selectedCar", carMakeModel);
         sessionStorage.setItem("dailyRate", dailyRate);
-        console.log(carId)
-        alert(carId)
         // Display the popup overlay
         document.querySelector(".popup-overlay").style.display = "flex";
     });

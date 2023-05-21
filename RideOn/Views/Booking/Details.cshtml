@@ -16,7 +16,34 @@
                         <img src="@Html.DisplayFor(model => model.Image)" alt="Image">
 
                     </div>
-                    <div class="row m-0 bg-light d-flex">
+                    <div class="row m-0 bg-light">
+                        <div class="col-md-4 col-6 ps-30 pe-0 my-4">
+                            <p class="text-muted"><i class="ri-group-line" style="color: black"></i></p>
+                            <p class="h5">@Html.DisplayFor(model => model.Seat)<span class="ps-1"> Seats</span></p>
+                        </div>
+                        <div class="col-md-4 col-6  ps-30 my-4">
+                            <p class="text-muted"><img src="~/images/carDoor.png" style="height:1.3rem; width:1.3rem;" /></p>
+                            <p class="h5 m-0">@Html.DisplayFor(model => model.Doors)<span class="ps-1"> Doors</span></p>
+                            <i class="mdi:car-door"></i>
+                        </div>
+                        <div class="col-md-4 col-6 ps-30 my-4">
+                            <p class="text-muted"><img src="~/images/manual-transmission.png" style="height:1.3rem; width:1.3rem;" /></p>
+                            <p class="h5 m-0">@Html.DisplayFor(model => model.Shift)</p>
+                        </div>
+                        <div class="col-md-4 col-6 ps-30 my-4">
+                            <p class="text-muted"><img src="~/images/ac.png" style="height:1.3rem; width:1.3rem;" /></p>
+                            <p class="h5 m-0">AC</p>
+                        </div>
+                        <div class="col-md-4 col-6 ps-30 my-4">
+                            <p class="text-muted"><img src="~/images/gas-station.png" style="height:1.3rem; width:1.3rem;" /></p>
+                            <p class="h5 m-0">Bensin</p>
+                        </div>
+                        <div class="col-md-4 col-6 ps-30 my-4">
+                            <p class="text-muted"><i class="ri-briefcase-3-line" style="color: black"></i></p>
+                            <p class="h5">2<span class="ps-1"> suitcases</span></p>
+                        </div>
+                    </div>
+                    @*<div class="row m-0 bg-light d-flex">
                         <div class="car-info col-md-12 d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="ri-group-line"> @Html.DisplayFor(model => model.Seat) Seat</i>
@@ -34,11 +61,12 @@
                         </div>
 
 
-                    </div>
+                    </div>*@
 
 
                 </div>
             </div>
+
             <div class="col-lg-5 p-0 ps-lg-4">
                 <div class="row m-0">
                     <div class="col-12 px-4">
@@ -54,7 +82,7 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <p class="textmuted">Rental period</p>
-                            <p class="fs-3 fw-bold" id="rent-days">1</p>
+                            <p class="fs-4 fw-bold" id="rent-days">1</p>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <p class="textmuted fw-bold">Total</p>

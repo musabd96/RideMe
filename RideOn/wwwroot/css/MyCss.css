@@ -514,7 +514,8 @@ a {
 
 .ReviewAndBook .container {
     margin: 20px auto;
-    max-width: 1000px;
+    max-width: 200rem;
+    max-height: 200rem;
     background-color: white;
     padding: 0;
 }
