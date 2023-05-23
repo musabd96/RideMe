@@ -207,7 +207,19 @@ document.addEventListener("DOMContentLoaded", function () {
             pickupLocation.classList.add("shake");
             pickupLocation.style = "border: 1px solid #ff0000";
             isEmptyField = true;
-        } 
+        } else {
+            //dropoffLocation.style = "border: ";
+        }
+
+        //if (dropoffLocation.value.trim() === "-Select City or Airport-") {
+        //    dropoffLocation.classList.remove("shake");
+        //    void dropoffLocation.offsetWidth;
+        //    dropoffLocation.classList.add("shake");
+        //    dropoffLocation.style = "border: 1px solid #ff0000";
+        //    isEmptyField = true;
+        //} else {
+        //    dropoffLocation.style = "border: ";
+        //}
 
         if (pickupDate.value.trim() === "") {
             pickupDate.classList.remove("shake");
@@ -346,6 +358,7 @@ $(document).ready(function () {
     if (sessionStorage.getItem("pickupLocation")) {
         // Retrieve the data from local session storage
         var pickupLocation = sessionStorage.getItem("pickupLocation");
+        var dropoffLocation = sessionStorage.getItem("dropoffLocation");
         var pickupDate = sessionStorage.getItem("pickupDate");
         var pickupTime = sessionStorage.getItem("pickupTime");
         var returnDate = sessionStorage.getItem("returnDate");
@@ -380,20 +393,24 @@ totalAmountElement.forEach((element, index) => {
 });
 
 
-// Retrieve the daysBooking value from localStorage
-let rentDays = parseInt(sessionStorage.getItem("daysBooking"));
-let pickupLocation = sessionStorage.getItem("pickupLocation");
-let pickupDate = sessionStorage.getItem("pickupDate");
-let pickupTime = sessionStorage.getItem("pickupTime");
-let returnDate = sessionStorage.getItem("returnDate");
-let returnTime = sessionStorage.getItem("returnTime");
-document.getElementById("PickUpLocation").textContent = pickupLocation;
-document.getElementById("PickupDateTime").textContent = pickupDate + " " + pickupTime;
-document.getElementById("ReturnDateTime").textContent = returnDate + " " + returnTime;
-document.getElementById("rent-days").textContent = rentDays + " Days";
-let price = parseFloat(document.getElementById("total").textContent);
-let total = price * rentDays;
-document.getElementById("total").textContent = "$" + total + ",00";
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the daysBooking value from localStorage
+    let rentDays = parseInt(sessionStorage.getItem("daysBooking"));
+    let price = parseFloat(document.getElementById("total").textContent);
+    let total = price * rentDays;
+
+    let pickupLocation = sessionStorage.getItem("pickupLocation");
+    let pickupDate = sessionStorage.getItem("pickupDate");
+    let pickupTime = sessionStorage.getItem("pickupTime");
+    let returnDate = sessionStorage.getItem("returnDate");
+    let returnTime = sessionStorage.getItem("returnTime");
+    document.getElementById("PickUpLocation").textContent = pickupLocation;
+    document.getElementById("PickupDateTime").textContent = pickupDate + " " + pickupTime;
+    document.getElementById("ReturnDateTime").textContent = returnDate + " " + returnTime;
+    document.getElementById("rent-days").textContent = rentDays + " Days";
+    document.getElementById("total").textContent = "$" + total + ",00";
+
+});
 
 // Select all elements with the class "open-popup-btn"
 var buttons = document.querySelectorAll(".open-popup");
@@ -420,3 +437,6 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
     document.querySelector(".popup-overlay").style.display = "none";
    
 });
+
+
+

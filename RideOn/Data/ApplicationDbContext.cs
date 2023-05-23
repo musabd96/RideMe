@@ -11,5 +11,7 @@ namespace RideOn.Data
         {
         }
         public DbSet<Car> Car { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+
     }
 }
