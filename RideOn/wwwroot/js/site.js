@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sessionStorage.setItem("returnTime", returnTime.value);
 
         // Navigate to the booking page
-        window.location.href = "booking";
+        window.location.href = "Vehicles";
     });
 });
 
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var carId = sessionStorage.getItem("selectedCarId", carId);
        
         // Navigate to the booking page
-        window.location.href = "booking/Details/"+ carId;
+        window.location.href = "Vehicles"+ carId;
     });
 });
 

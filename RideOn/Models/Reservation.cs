@@ -12,9 +12,11 @@ namespace RideOn.Models
         [Required]
         public int CarId { get; set; }
         [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
+        public string PickUpLocation { get; set; }
+        public DateTime PickUpDate { get; set; }
+        public DateTime PickUpTime { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public DateTime ReturnTime { get; set; }
         [Required]
         public decimal TotalCost { get; set; }
         [Required]

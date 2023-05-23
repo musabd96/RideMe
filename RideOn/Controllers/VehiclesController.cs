@@ -4,11 +4,11 @@ using RideOn.Data;
 
 namespace RideOn.Controllers
 {
-    public class BookingController : Controller
+    public class VehiclesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public BookingController(ApplicationDbContext context)
+        public VehiclesController(ApplicationDbContext context)
         {
             _context = context;
         }
