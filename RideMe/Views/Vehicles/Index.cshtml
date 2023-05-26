@@ -1,0 +1,159 @@
+﻿
+@model RideMe.Models.Booking
+@{
+    ViewData["Title"] = "Vehicles";
+}
+@{
+    TimeSpan dateDifference = Model.Rentals.ReturnDate - Model.Rentals.PickupDate;
+    int differenceInDays = (int)dateDifference.TotalDays;
+    int carCount = Model.Cars.Count(); // Count of cars
+
+}
+
+<div class="booking-info" id="selected-data-dropdown">
+    <div class="booking-form">
+        <div class="row">
+            <div class="row">
+                <div class="col">
+                    <div class="Pickup-locations-info">
+                        <label>Pickup Location</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Pickup-Date-info">
+                        <label>Pickup Date</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Return-Date-info">
+                        <label>Return Date</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="Pickup-locations-discription">
+                        <span class="discription">
+                            @Html.DisplayFor(model => model.Rentals.PickupLocation)
+                        </span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Pickup-Date-discription">
+                        <span class="discription">
+                            @Html.DisplayFor(model => model.Rentals.PickupDate)
+                            @Html.DisplayFor(model => model.Rentals.PickupTime)
+                        </span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="Return-Date-discription">
+                        <span class="discription">
+                            @Html.DisplayFor(model => model.Rentals.ReturnDate)
+                            @Html.DisplayFor(model => model.Rentals.ReturnTime)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-controller="Rentals" asp-action="Create" method="post">
+    <div class="booking hidden">
+        <div class="form-group">
+            <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
+            <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
+                <option value="">-Select City or Airport-</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Gothenburg">Gothenburg</option>
+                <option value="Malmö">Malmö</option>
+                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+            </select>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Rentals.PickupDate">Pick-up Date</label>
+                    <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Rentals.PickupTime">Time</label>
+                    <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Rentals.ReturnDate">Return Date</label>
+                    <input asp-for="Rentals.ReturnDate" class="form-control return-date" type="date" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Rentals.ReturnTime">Time</label>
+                    <input asp-for="Rentals.ReturnTime" class="form-control return-time" type="time" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="Search" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<h2 class="my-4">
+    @carCount OFFERS
+</h2>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        @foreach (var car in Model.Cars)
+        {
+            <div class="col">
+                <div class="card-sl" style="margin-top: 50px;">
+                    <div class="card-image">
+                        <img src="@car.Image" alt="">
+                    </div>
+
+                    <a class="card-action" href="#"><i class="ri-heart-3-fill"></i></a>
+                    <div class="card-heading">
+                        @car.Make @car.Model
+                    </div>
+                    <div class="card-text">
+                        <i class="ri-check-fill"></i>
+                        incl. unlimited km
+                    </div>
+                    <div class="card-text">
+                        $ <span class="card-price">@car.DailyRate</span>
+                    </div>
+                    <div class="card-text">
+                        Total amount: $ <span class="total-amount">@Math.Round(car.DailyRate * differenceInDays, 2)</span>
+                    </div>
+
+                    <div class="card-btn">
+                        <a asp-controller="Rentals" asp-action="Details" asp-route-id="@car.Id" class="card-button" id="BookNow">Search</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

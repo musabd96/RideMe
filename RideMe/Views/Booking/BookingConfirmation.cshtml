@@ -1,0 +1,90 @@
+﻿@model RideMe.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Confirmation";
+}
+
+<section class="h-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-10 col-xl-8">
+                <div class="card" style="border-radius: 10px;">
+                    <div class="card-header px-4 py-5">
+                        <h5 class="text-muted mb-0">Thank you for choosing us, <span style="color: #011544;">@Model.Rentals.CustomerId</span>!</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <p class="lead fw-normal mb-0" style="color: #011544;">Receipt</p>
+                            <p class="small text-muted mb-0">Receipt Voucher : @Model.Id</p>
+                        </div>
+                        
+                        <div class="card shadow-0 border mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 p-5">
+                                        <img src="@Html.DisplayFor(model => model.Car.Image)" alt="Image">
+
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0">Vehicle @Model.Car.Make @Model.Car.Model</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small"> @Model.Car.Shift</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Fuel   @Model.Car.Fuel</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">DailyRate $@Model.Car.DailyRate</p>
+                                    </div>
+                                </div>
+                                <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Location @Model.Rentals.PickupLocation</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.PickupDate.ToShortDateString() @Model.Rentals.PickupTime.ToString("hh\\:mm") </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.ReturnDate.ToShortDateString() @Model.Rentals.ReturnTime.ToString("hh\\:mm") </p>
+                                    </div>
+                                    <div class="col-md-3 align-items-center">
+                                        <p class="text-muted mb-0 small">RentalPeriod @Model.RentalPeriod Days</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="d-flex justify-content-between pt-2">
+                            <p class="fw-bold mb-0">Order Details</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-2">
+                            <p class="text-muted mb-0">Invoice Number : 788152</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-5">
+                            <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+                        </div>*@
+                    </div>
+                    <div class="card-footer border-0 px-4 py-5"
+                         style="background-color: #011544; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                            Total
+                            paid: <span class="h2 mb-0 ms-2">$ @Model.TotalCost</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
