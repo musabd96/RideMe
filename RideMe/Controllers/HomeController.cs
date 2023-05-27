@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RideMe.Data;
 using RideMe.Data.Migrations;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace RideMe.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

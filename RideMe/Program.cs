@@ -7,7 +7,7 @@ namespace RideMe
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,8 @@ namespace RideMe
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
@@ -61,6 +62,42 @@ namespace RideMe
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+            //Role Manger
+            using(var scope = app.Services.CreateScope())
+            {
+                var roleManger =
+                    scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                var roles = new[] { "Admin", "Manager", "Customer" };
+
+                foreach (var role in roles)
+                {
+                    if (!await roleManger.RoleExistsAsync(role))
+                        await roleManger.CreateAsync(new IdentityRole(role));
+                }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManger =
+                    scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+                string email = "admin@admin.com";
+                string password = "Abc123!";
+
+                if(await userManger.FindByEmailAsync(email) == null)
+                {
+                    var user = new IdentityUser();
+                    user.UserName = email;
+                    user.Email = email;
+                    await userManger.CreateAsync(user, password);
+
+                    await userManger.AddToRoleAsync(user, "Admin");
+                }
+            }
+
             app.MapRazorPages();
 
             app.Run();
