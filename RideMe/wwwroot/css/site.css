@@ -34,16 +34,17 @@ html, body {
 
 /* Nav bar Styles */
 
-.navbar-nav .nav-item .nav-link {
+.navbar-nav .nav-item .nav-link,
+.navbar .navbar-brand {
     color: #fff;
     position: relative;
     font-size: 1.5rem;
 }
 
-    .navbar-nav .nav-item .nav-link:hover {
-        color: #fe6e19;
-    }
-
+.navbar-nav .nav-item .nav-link:hover,
+.navbar .navbar-brand:hover{
+    color: #fe6e19;
+}
 
 
 /* Home page Styles */
