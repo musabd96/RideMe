@@ -6,7 +6,7 @@ namespace RideMe.Models
     {
         [Key]
         public int Id { get; set; }
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public string PickupLocation { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PickupDate { get; set; }

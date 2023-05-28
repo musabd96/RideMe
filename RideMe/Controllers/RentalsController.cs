@@ -41,13 +41,13 @@ namespace RideMe.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,PickupLocation,PickupDate,PickupTime,ReturnDate,ReturnTime")] Rentals rentals)
+        public async Task<IActionResult> Create([Bind("Id,CustomerId, PickupLocation,PickupDate,PickupTime,ReturnDate,ReturnTime")] Rentals rentals)
         {
             if (ModelState.IsValid)
             {
                 var rental = await _context.Rentals
                     .OrderByDescending(r => r.Id)
-                    .FirstOrDefaultAsync(r => r.CustomerId == 1);
+                    .FirstOrDefaultAsync(r => r.CustomerId == rentals.CustomerId);
 
                 if (rental != null)
                 {
@@ -71,7 +71,7 @@ namespace RideMe.Controllers
                 // Create a new rental
                 var newRental = new Rentals
                 {
-                    CustomerId = 1,
+                    CustomerId = rentals.CustomerId,
                     PickupLocation = rentals.PickupLocation,
                     PickupDate = rentals.PickupDate,
                     PickupTime = rentals.PickupTime,
@@ -81,7 +81,7 @@ namespace RideMe.Controllers
 
                 _context.Rentals.Add(newRental);
                 await _context.SaveChangesAsync();
-                ViewBag.Message = "New rental created with rentalId: " + newRental.Id;
+                ViewBag.Message = "New rental created with rentalId: " + newRental.PickupDate;
                 return RedirectToAction("Index", "Vehicles");
             }
 

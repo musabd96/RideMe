@@ -1,5 +1,8 @@
 ﻿@model RideMe.Models.Booking
-
+@using Microsoft.AspNetCore.Identity;
+@using RideMe.Data;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -39,6 +42,14 @@
 
             <form asp-controller="Rentals" asp-action="Create" method="post">
                 <div class="booking">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        //Get the user Id
+                        var user = await UserManager.GetUserAsync(User);
+                        var UserId = user.Id;
+
+                        <input type="text" asp-for="Rentals.CustomerId" value="@UserId" />
+                    }
                     <div class="form-group">
                         <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
                         <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
