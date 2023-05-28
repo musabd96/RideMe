@@ -1,23 +1,29 @@
 ﻿@model RideMe.Models.Booking
+@using Microsoft.AspNetCore.Identity;
+@using RideMe.Data;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Booking Confirmation";
-    var message = ViewBag.Message as string;
+
+    //Get the user Id
+    var user = await UserManager.GetUserAsync(User);
+    var FirstName = user.FirstName;
 }
 
-<h1>RentalsId: @message</h1>
 <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-10 col-xl-8">
                 <div class="card" style="border-radius: 10px;">
-                    <div class="card-header px-4 py-5">
-                        <h5 class="text-muted mb-0">Thank you for choosing us, <span style="color: #011544;">@Model.Rentals.CustomerId</span>!</h5>
+                    <div class="card-header px-4 py-5" style="background-color: #011544;">
+                        <h5 class="text-white mb-0">Thank you for choosing us, <span>@FirstName</span>!</h5>
                     </div>
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <p class="lead fw-normal mb-0" style="color: #011544;">Receipt</p>
-                            <p class="small text-muted mb-0">Receipt Voucher : @Model.Id</p>
+                            <p class="lead fw-normal mb-0" style="color: #011544; font-size:2.5rem;">Booking</p>
+                            <p class="small text-muted mb-0">Booking Voucher : @Model.Id</p>
                         </div>
                         
                         <div class="card shadow-0 border mb-4">

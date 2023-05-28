@@ -23,6 +23,16 @@ namespace RideMe.Controllers
         [HttpPost]
         public IActionResult CreateBooking(int carId, int rentalsId, int rentalPeriod, decimal totalCost)
         {
+            // Check if a booking already exists for the given rentalsId
+            bool isBookingExists = _context.Booking.Any(b => b.RentalsId == rentalsId);
+
+            if (isBookingExists)
+            {
+                // Handle the case when a booking already exists
+                // You can redirect to an error page or return an error message
+                return RedirectToAction("BookingConfirmation", new { RentalsId = rentalsId });
+            }
+
             Booking booking = new Booking
             {
                 CarId = carId,
@@ -37,6 +47,8 @@ namespace RideMe.Controllers
             // Redirect to a success page or perform any other desired action.
             return RedirectToAction("BookingConfirmation", new { RentalsId = rentalsId });
         }
+
+
         //public async Task<IActionResult> BookingConfirmationAsync()
         //{
 

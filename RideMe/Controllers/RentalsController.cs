@@ -81,8 +81,8 @@ namespace RideMe.Controllers
 
                 _context.Rentals.Add(newRental);
                 await _context.SaveChangesAsync();
-                ViewBag.Message = "New rental created with rentalId: " + newRental.PickupDate;
-                return RedirectToAction("Index", "Vehicles");
+                ViewBag.Message = "New rental created with rentalId: " + newRental.Id;
+                return RedirectToAction("Index", "Vehicles", new { RentalsId = newRental.Id });
             }
 
             return View(rentals);

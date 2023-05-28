@@ -17,12 +17,11 @@ namespace RideMe.Controllers
         }
 
         // GET: Cars
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int RentalsId)
         {
             // Retrieve the last inserted reservation
             var rentals = await _context.Rentals
-                .OrderByDescending(m => m.Id)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(b => b.Id == RentalsId);
             var cars = await _context.Car.ToListAsync();
             var booking = new Booking
             {
