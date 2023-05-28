@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using RideMe.Constans;
 using RideMe.Data;
 
 namespace RideMe.Areas.Identity.Pages.Account
@@ -129,6 +130,7 @@ namespace RideMe.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
                     _logger.LogInformation("User created a new account with password.");
 
                     // Add the user to the "Customer" role

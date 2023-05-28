@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RideMe.Data;
+using RideMe.Models;
 using RideOn.Models;
 
 namespace RideMe
@@ -34,6 +35,7 @@ namespace RideMe
                 var services = scope.ServiceProvider;
                 try
                 {
+                    await SeedRules.SeedRolesAndAdminAsync(services);// Call SeedRules.Initialize to seed the database
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.Migrate();
                     SeedCar.Initialize(services); // Call SeedCar.Initialize to seed the database
