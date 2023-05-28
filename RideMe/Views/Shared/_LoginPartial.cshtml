@@ -6,11 +6,13 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+        var user = await UserManager.GetUserAsync(User);
+        var FirstName = user.FirstName;
         <li class="nav-item me-3 me-lg-0 dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
-                Hello @User.Identity?.Name!
+                Hello! @FirstName 
                 <img src="~/images/profile-user.png" class="rounded-circle" height="22"
                      alt="" loading="lazy" style="width: 2rem;" />
             </a>
