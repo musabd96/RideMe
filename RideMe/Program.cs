@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using RideMe.Data;
 using RideOn.Models;
 
@@ -15,11 +16,15 @@ namespace RideMe
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+           
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -64,39 +69,39 @@ namespace RideMe
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-            //Role Manger
-            using(var scope = app.Services.CreateScope())
-            {
-                var roleManger =
-                    scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            ////Role Manger
+            //using(var scope = app.Services.CreateScope())
+            //{
+            //    var roleManger =
+            //        scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                var roles = new[] { "Admin", "Manager", "Customer" };
+            //    var roles = new[] { "Admin", "Manager", "Customer" };
 
-                foreach (var role in roles)
-                {
-                    if (!await roleManger.RoleExistsAsync(role))
-                        await roleManger.CreateAsync(new IdentityRole(role));
-                }
-            }
+            //    foreach (var role in roles)
+            //    {
+            //        if (!await roleManger.RoleExistsAsync(role))
+            //            await roleManger.CreateAsync(new IdentityRole(role));
+            //    }
+            //}
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var userManger =
-                    scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            //using (var scope = app.Services.CreateScope())
+            //{
+            //    var userManger =
+            //        scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-                string email = "admin@admin.com";
-                string password = "Abc123!";
+            //    string email = "admin@admin.com";
+            //    string password = "Abc123!";
 
-                if(await userManger.FindByEmailAsync(email) == null)
-                {
-                    var user = new IdentityUser();
-                    user.UserName = email;
-                    user.Email = email;
-                    await userManger.CreateAsync(user, password);
+            //    if(await userManger.FindByEmailAsync(email) == null)
+            //    {
+            //        var user = new IdentityUser();
+            //        user.UserName = email;
+            //        user.Email = email;
+            //        await userManger.CreateAsync(user, password);
 
-                    await userManger.AddToRoleAsync(user, "Admin");
-                }
-            }
+            //        await userManger.AddToRoleAsync(user, "Admin");
+            //    }
+            //}
 
             app.MapRazorPages();
 
