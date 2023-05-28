@@ -343,7 +343,14 @@
         <form asp-controller="Rentals" asp-action="Details" method="post">
             <div class="booking">
                 <input  type="text" id="selected-car-id" name="id" value="" />
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    //Get the user Id
+                    var user = await UserManager.GetUserAsync(User);
+                    var UserId = user.Id;
 
+                    <input type="text" asp-for="Rentals.CustomerId" value="@UserId" />
+                }
                 <div class="form-group">
                     <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
                     <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
@@ -354,7 +361,9 @@
                         <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
                         <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
                     </select>
+
                 </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group">

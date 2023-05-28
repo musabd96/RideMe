@@ -1,5 +1,8 @@
-﻿
-@model RideMe.Models.Booking
+﻿@model RideMe.Models.Booking
+@using Microsoft.AspNetCore.Identity;
+@using RideMe.Data;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Vehicles";
 }
@@ -7,8 +10,10 @@
     TimeSpan dateDifference = Model.Rentals.ReturnDate - Model.Rentals.PickupDate;
     int differenceInDays = (int)dateDifference.TotalDays;
     int carCount = Model.Cars.Count(); // Count of cars
-
+    var user = await UserManager.GetUserAsync(User);
 }
+
+<h1>@Model.Rentals.Id</h1>
 
 <div class="booking-info" id="selected-data-dropdown">
     <div class="booking-form">
@@ -61,6 +66,14 @@
 
 <form asp-controller="Rentals" asp-action="Create" method="post">
     <div class="booking hidden">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            //Get the user Id
+            
+            var UserId = user.Id;
+
+            <input type="hidden" asp-for="Rentals.CustomerId" value="@UserId" />
+        }
         <div class="form-group">
             <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
             <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
@@ -146,7 +159,7 @@
                     </div>
 
                     <div class="card-btn">
-                        <a asp-controller="Rentals" asp-action="Details" asp-route-id="@car.Id" class="card-button" id="BookNow">Search</a>
+                        <a asp-controller="Rentals" asp-action="Details" asp-route-CarId="@car.Id" asp-route-RentalsId="@Model.Rentals.Id" class="card-button" id="BookNow">Search</a>
                     </div>
 
                 </div>

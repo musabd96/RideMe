@@ -21,14 +21,15 @@ namespace RideMe.Controllers
         }
 
         // GET: RentalsController/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? CarId, int id, int RentalsId)
         {
+            
             // Retrieve the last inserted reservation
             var rentals = await _context.Rentals
-                .OrderByDescending(m => m.Id)
-                .FirstOrDefaultAsync();
+                //.OrderByDescending(m => m.Id)
+                .FirstOrDefaultAsync(r => r.Id == RentalsId);
             var car = await _context.Car
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == CarId);
             var booking = new Booking
             {
                 Rentals = rentals,
@@ -64,7 +65,7 @@ namespace RideMe.Controllers
                         rental.ReturnTime = rentals.ReturnTime;
 
                         await _context.SaveChangesAsync();
-                        return RedirectToAction("Index", "Vehicles"); // Return the existing rental
+                        return RedirectToAction("Index", "Vehicles", new { RentalsId = rental.Id }); // Return the existing rental
                     }
                 }
 
