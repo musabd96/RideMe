@@ -48,7 +48,7 @@
                         var user = await UserManager.GetUserAsync(User);
                         var UserId = user.Id;
 
-                        <input type="text" asp-for="Rentals.CustomerId" value="@UserId" />
+                        <input type="hidden" asp-for="Rentals.CustomerId" value="@UserId" />
                     }
                     <div class="form-group">
                         <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
@@ -342,14 +342,14 @@
 
         <form asp-controller="Rentals" asp-action="Details" method="post">
             <div class="booking">
-                <input  type="text" id="selected-car-id" name="id" value="" />
+                <input  type="hidden" id="selected-car-id" name="id" value="" />
                 @if (SignInManager.IsSignedIn(User))
                 {
                     //Get the user Id
                     var user = await UserManager.GetUserAsync(User);
                     var UserId = user.Id;
 
-                    <input type="text" asp-for="Rentals.CustomerId" name="CustomerId" value="@UserId" />
+                    <input type="hidden" asp-for="Rentals.CustomerId" name="CustomerId" value="@UserId" />
                 }
                 <div class="form-group">
                     <label asp-for="Rentals.PickupLocation" >Pick-up Location</label>

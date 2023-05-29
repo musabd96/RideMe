@@ -23,7 +23,6 @@ namespace RideMe.Controllers
         // GET: RentalsController/Details/5
         public async Task<IActionResult> Details(int? CarId, string id, int RentalsId, [Bind("Id,CustomerId, PickupLocation,PickupDate,PickupTime,ReturnDate,ReturnTime")] Rentals rentals)
         {
-            //int CId = Int32.Parse(id.ToString());
             if (!string.IsNullOrEmpty(rentals.PickupLocation))
             {
                 var rental = await _context.Rentals
@@ -32,6 +31,7 @@ namespace RideMe.Controllers
 
                 if (rental != null)
                 {
+                    
                     var rentalId = await _context.Booking
                         .FirstOrDefaultAsync(b => b.RentalsId == rental.Id);
 
@@ -58,36 +58,37 @@ namespace RideMe.Controllers
 
                         return View(bookingPopUp);
                     }
-                    // Create a new rental
-                    var newRental = new Rentals
-                    {
-                        CustomerId = rentals.CustomerId,
-                        PickupLocation = rentals.PickupLocation,
-                        PickupDate = rentals.PickupDate,
-                        PickupTime = rentals.PickupTime,
-                        ReturnDate = rentals.ReturnDate,
-                        ReturnTime = rentals.ReturnTime
-                    };
+                 }  
+                // Create a new rental
+                var newRental = new Rentals
+                {
+                    CustomerId = rentals.CustomerId,
+                    PickupLocation = rentals.PickupLocation,
+                    PickupDate = rentals.PickupDate,
+                    PickupTime = rentals.PickupTime,
+                    ReturnDate = rentals.ReturnDate,
+                    ReturnTime = rentals.ReturnTime
+                };
 
-                    _context.Rentals.Add(newRental);
+                _context.Rentals.Add(newRental);
 
-                    await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
-                    var rentalsInfoPopUpNew = await _context.Rentals
-                            .FirstOrDefaultAsync(r => r.Id == newRental.Id);
+                var rentalsInfoPopUpNew = await _context.Rentals
+                        .FirstOrDefaultAsync(r => r.Id == newRental.Id);
 
-                    var carPopUpNew = await _context.Car
-                        .FirstOrDefaultAsync(m => m.Id == Int32.Parse(id.ToString()));
-                    var bookingPopUpNew = new Booking
-                    {
-                        Rentals = rentalsInfoPopUpNew,
-                        Car = carPopUpNew
-                    };
+                var carPopUpNew = await _context.Car
+                    .FirstOrDefaultAsync(m => m.Id == Int32.Parse(id.ToString()));
+                var bookingPopUpNew = new Booking
+                {
+                    Rentals = rentalsInfoPopUpNew,
+                    Car = carPopUpNew
+                };
 
-                    return View(bookingPopUpNew);
-                    // Return an error view indicating that the "selected-car-id" field is empty
-                    //return View("Error");
-                }
+                return View(bookingPopUpNew);
+                // Return an error view indicating that the "selected-car-id" field is empty
+                //return View("Error");
+                
             }
 
             // Retrieve the last inserted reservation

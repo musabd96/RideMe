@@ -49,44 +49,15 @@ namespace RideMe.Controllers
         }
 
 
-        //public async Task<IActionResult> BookingConfirmationAsync()
-        //{
-
-
-        //    var rental = await _context.Rentals
-        //            .OrderByDescending(r => r.Id)
-        //            .FirstOrDefaultAsync(r => r.CustomerId == 1);
-
-        //    var rentalId = await _context.Booking
-        //                .FirstOrDefaultAsync(b => b.RentalsId == rental.Id); 
-
-
-        //    return View(rentalId);
-        //}
-
         public async Task<IActionResult> BookingConfirmationAsync(int RentalsId)
         {
-            //var rental = await _context.Rentals
-            //    .OrderByDescending(r => r.Id)
-            //    .FirstOrDefaultAsync(r => r.CustomerId == "4ace4731-7531-402e-be95-1829a99574a3");
-
             var booking = await _context.Booking
                 .Include(b => b.Rentals)
                 .Include(b => b.Car)
                 .FirstOrDefaultAsync(b => b.RentalsId == RentalsId);
 
-            
-
             return View(booking);
 
-
-            //var booking = await _context.Booking
-            //    .Include(b => b.Rentals)
-            //    .Include(b => b.Car)
-            //    .OrderByDescending(m => m.Id)
-            //    .FirstOrDefaultAsync();
-
-            //return View(booking);
         }
 
 
