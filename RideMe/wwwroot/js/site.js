@@ -43,7 +43,7 @@ buttons.forEach(function (button) {
         // Retrieve car details from the clicked button
         var carId = button.getAttribute("data-id");
         var selectedCarIdInput = document.getElementById('selected-car-id');
-        alert(carId)
+        
         selectedCarIdInput.value = carId;
         document.querySelector(".popup-overlay").style.display = "flex";
     });

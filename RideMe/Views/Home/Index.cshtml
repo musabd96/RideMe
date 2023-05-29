@@ -349,11 +349,11 @@
                     var user = await UserManager.GetUserAsync(User);
                     var UserId = user.Id;
 
-                    <input type="text" asp-for="Rentals.CustomerId" value="@UserId" />
+                    <input type="text" asp-for="Rentals.CustomerId" name="CustomerId" value="@UserId" />
                 }
                 <div class="form-group">
-                    <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
-                    <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
+                    <label asp-for="Rentals.PickupLocation" >Pick-up Location</label>
+                    <select asp-for="Rentals.PickupLocation" name="PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
                         <option value="">-Select City or Airport-</option>
                         <option value="Stockholm">Stockholm</option>
                         <option value="Gothenburg">Gothenburg</option>
@@ -368,13 +368,13 @@
                     <div class="col">
                         <div class="form-group">
                             <label asp-for="Rentals.PickupDate">Pick-up Date</label>
-                            <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" />
+                            <input asp-for="Rentals.PickupDate" name="PickupDate" class="form-control pickup-date" type="date" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label asp-for="Rentals.PickupTime">Time</label>
-                            <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" />
+                            <input asp-for="Rentals.PickupTime" name="PickupTime" class="form-control pickup-time" type="time" />
                         </div>
                     </div>
                 </div>
@@ -383,13 +383,13 @@
                     <div class="col">
                         <div class="form-group">
                             <label asp-for="Rentals.ReturnDate">Return Date</label>
-                            <input asp-for="Rentals.ReturnDate" class="form-control return-date" type="date" />
+                            <input asp-for="Rentals.ReturnDate" name="ReturnDate" class="form-control return-date" type="date" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label asp-for="Rentals.ReturnTime">Time</label>
-                            <input asp-for="Rentals.ReturnTime" class="form-control return-time" type="time" />
+                            <input asp-for="Rentals.ReturnTime" name="ReturnTime" class="form-control return-time" type="time" />
                         </div>
                     </div>
                 </div>
