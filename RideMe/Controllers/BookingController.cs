@@ -1,24 +1,48 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RideMe.Data;
+using RideMe.Data.Migrations;
 using RideMe.Models;
 
 namespace RideMe.Controllers
 {
+    //[Authorize]
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager;
 
-        public BookingController(ApplicationDbContext context)
+        public BookingController(ApplicationDbContext context, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var rentalInfo = await _context.Rentals
+                .Where(r => r.CustomerId == userId)
+                .Select(r => r.Id)
+                .FirstOrDefaultAsync();
+
+            var bookingInfo = await _context.Booking
+                .Include(b => b.Car)
+                .Include(b => b.Rentals)
+                .FirstOrDefaultAsync(b => b.RentalsId == rentalInfo);
+
+            return View(bookingInfo);
         }
+
+
+
+
 
         [HttpPost]
         public IActionResult CreateBooking(int carId, int rentalsId, int rentalPeriod, decimal totalCost)
