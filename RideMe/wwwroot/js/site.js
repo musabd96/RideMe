@@ -34,16 +34,33 @@ $(document).ready(function () {
 
         $('.pickup-date-update').attr('min', todayDate);
 
-        var today = new Date();
-        today.setDate(today.getDate() + 1); // Add one day to today's date
+        $('.pickup-date-update').on('change', function () {
+            var pickupDate = new Date($(this).val());
+            pickupDate.setDate(pickupDate.getDate() + 1);
 
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
+            var returnDate = pickupDate.toISOString().split('T')[0];
+            $('.return-date-update').val(returnDate);
+        });
 
-        var tomorrowDate = yyyy + '-' + mm + '-' + dd;
 
-        $('.return-date-update').attr('min', tomorrowDate);
+
+        $('.pickup-date-update').change(function () {
+            var pickupDate = new Date($(this).val());
+            var returnDate = new Date(pickupDate);
+            returnDate.setDate(returnDate.getDate() + 1);
+
+            var dd = String(returnDate.getDate()).padStart(2, '0');
+            var mm = String(returnDate.getMonth() + 1).padStart(2, '0');
+            var yyyy = returnDate.getFullYear();
+
+            var nextDayDate = yyyy + '-' + mm + '-' + dd;
+            $('.return-date-update').attr('min', nextDayDate);
+        });
+
+
+
+
+
 
 
         downArrow.toggle();
@@ -52,6 +69,8 @@ $(document).ready(function () {
         $('#return-date').prop('disabled', false);
     });
 });
+
+
 
 // Select all elements with the class "open-popup-btn"
 var buttons = document.querySelectorAll(".open-popup");
@@ -77,16 +96,6 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 // ------- HOME DATE ------////
 
 // Get today's date
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-var yyyy = today.getFullYear();
-
-var todayDate = yyyy + '-' + mm + '-' + dd;
-
-document.querySelector('.pickup-date').setAttribute('min', todayDate);
-document.querySelector('.pickup-date-popup').setAttribute('min', todayDate);
-
 var pickupDateInput = document.querySelector('.pickup-date');
 var pickupDatePopupInput = document.querySelector('.pickup-date-popup');
 var returnDateInput = document.querySelector('.return-date');
@@ -101,6 +110,7 @@ pickupDateInput.addEventListener('change', function () {
 
     var minDate = selectedDate.toISOString().split('T')[0];
 
+    returnDateInput.value = minDate;
     returnDateInput.setAttribute('min', minDate);
 
     returnDateInput.disabled = false;
@@ -112,19 +122,8 @@ pickupDatePopupInput.addEventListener('change', function () {
 
     var minDate = selectedDate.toISOString().split('T')[0];
 
+    returnDatePopupInput.value = minDate;
     returnDatePopupInput.setAttribute('min', minDate);
 
     returnDatePopupInput.disabled = false;
-});
-
-
-$(document).ready(function () {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    var todayDate = yyyy + '-' + mm + '-' + dd;
-
-    $('.pickup-date-update').attr('min', todayDate);
 });
