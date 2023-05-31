@@ -389,8 +389,10 @@ img {
 
 .pickup-location,
 .pickup-date,
+.pickup-date-popup,
 .pickup-time,
 .return-date,
+.return-date-popup,
 .return-time {
     padding: 10px 20px;
     font-size: 1.5rem;
