@@ -96,6 +96,17 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 // ------- HOME DATE ------////
 
 // Get today's date
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+var todayDate = yyyy + '-' + mm + '-' + dd;
+
+document.querySelector('.pickup-date').setAttribute('min', todayDate);
+document.querySelector('.pickup-date-popup').setAttribute('min', todayDate);
+
 var pickupDateInput = document.querySelector('.pickup-date');
 var pickupDatePopupInput = document.querySelector('.pickup-date-popup');
 var returnDateInput = document.querySelector('.return-date');

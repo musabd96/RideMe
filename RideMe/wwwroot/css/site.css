@@ -1,10 +1,11 @@
 html {
-  font-size: 14px;
+    font-size: 80%;
 }
+
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 80%;
   }
 }
 
@@ -29,6 +30,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Work+Sans:wght@800&display=swap');
 
