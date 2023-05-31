@@ -32,16 +32,27 @@ namespace RideMe.Controllers
                 .Select(r => r.Id)
                 .ToListAsync();
 
+            var bookingInfo = new List<Booking>();
 
-            var bookingInfo = await _context.Booking
-                .Include(b => b.Car)
-                .Include(b => b.Rentals)
-                .Where(b => rentalIds.Contains(b.RentalsId))
-                .ToListAsync();
-
+            if (User.IsInRole("Admin"))
+            {
+                bookingInfo = await _context.Booking
+                    .Include(b => b.Car)
+                    .Include(b => b.Rentals)
+                    .ToListAsync();
+            }
+            else
+            {
+                bookingInfo = await _context.Booking
+                    .Include(b => b.Car)
+                    .Include(b => b.Rentals)
+                    .Where(b => rentalIds.Contains(b.RentalsId))
+                    .ToListAsync();
+            }
 
             return View(bookingInfo);
         }
+
 
 
 
