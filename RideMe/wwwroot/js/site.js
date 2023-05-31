@@ -55,7 +55,7 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 
 });
 
-
+// ------- HOME DATE ------////
 // Get today's date
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -69,11 +69,14 @@ var todayDate = yyyy + '-' + mm + '-' + dd;
 document.querySelector('.pickup-date').setAttribute('min', todayDate);
 document.querySelector('.pickup-date-popup').setAttribute('min', todayDate);
 
-
 var pickupDateInput = document.querySelector('.pickup-date');
 var pickupDatePopupInput = document.querySelector('.pickup-date-popup');
 var returnDateInput = document.querySelector('.return-date');
 var returnDatePopupInput = document.querySelector('.return-date-popup');
+
+// Disable return date inputs initially
+returnDateInput.disabled = true;
+returnDatePopupInput.disabled = true;
 
 // Add an event listener to the Pickup Date input
 pickupDateInput.addEventListener('change', function () {
@@ -85,6 +88,9 @@ pickupDateInput.addEventListener('change', function () {
 
     // Set the minimum value of the Return Date input
     returnDateInput.setAttribute('min', minDate);
+
+    // Enable return date input
+    returnDateInput.disabled = false;
 });
 
 pickupDatePopupInput.addEventListener('change', function () {
@@ -96,4 +102,7 @@ pickupDatePopupInput.addEventListener('change', function () {
 
     // Set the minimum value of the Return Date input
     returnDatePopupInput.setAttribute('min', minDate);
+
+    // Enable return date input
+    returnDatePopupInput.disabled = false;
 });
