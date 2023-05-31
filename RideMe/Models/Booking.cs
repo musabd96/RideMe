@@ -16,6 +16,7 @@ namespace RideMe.Models
         [ForeignKey("Rentals")]
         public int RentalsId { get; set; }
         public Rentals Rentals { get; set; }
+        public IEnumerable<Rentals> RentalsInfo { get; set; }
 
         public decimal TotalCost { get; set; }
         public int RentalPeriod { get; set; }

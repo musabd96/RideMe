@@ -27,15 +27,18 @@ namespace RideMe.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var rentalInfo = await _context.Rentals
+            var rentalIds = await _context.Rentals
                 .Where(r => r.CustomerId == userId)
                 .Select(r => r.Id)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
+
 
             var bookingInfo = await _context.Booking
                 .Include(b => b.Car)
                 .Include(b => b.Rentals)
-                .FirstOrDefaultAsync(b => b.RentalsId == rentalInfo);
+                .Where(b => rentalIds.Contains(b.RentalsId))
+                .ToListAsync();
+
 
             return View(bookingInfo);
         }
