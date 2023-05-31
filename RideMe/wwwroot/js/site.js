@@ -34,6 +34,18 @@ $(document).ready(function () {
 
         $('.pickup-date-update').attr('min', todayDate);
 
+        var pickupDate = new Date($('.pickup-date-update').val()); 
+        pickupDate.setDate(pickupDate.getDate() + 1); 
+
+        var dd = String(pickupDate.getDate()).padStart(2, '0');
+        var mm = String(pickupDate.getMonth() + 1).padStart(2, '0');
+        var yyyy = pickupDate.getFullYear();
+
+        var returnDate = yyyy + '-' + mm + '-' + dd;
+
+        $('.return-date-update').attr('min', returnDate);
+
+
         $('.pickup-date-update').on('change', function () {
             var pickupDate = new Date($(this).val());
             pickupDate.setDate(pickupDate.getDate() + 1);
