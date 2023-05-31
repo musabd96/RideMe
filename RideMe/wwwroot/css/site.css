@@ -657,3 +657,16 @@ h5,
         border-bottom-left-radius: 0.5rem;
     }
 }
+
+
+/*Register*/
+
+.cascading-right {
+    margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+    .cascading-right {
+        margin-right: 0;
+    }
+}
