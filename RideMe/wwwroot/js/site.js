@@ -25,6 +25,25 @@ $(document).ready(function () {
         var downArrow = $(this).find('.ri-arrow-down-s-line');
         var upArrow = $(this).find('.ri-arrow-up-s-line');
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        var todayDate = yyyy + '-' + mm + '-' + dd;
+
+        $('.pickup-date-update').attr('min', todayDate);
+
+        var today = new Date();
+        today.setDate(today.getDate() + 1); // Add one day to today's date
+
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        var tomorrowDate = yyyy + '-' + mm + '-' + dd;
+
+        $('.return-date-update').attr('min', tomorrowDate);
 
 
         downArrow.toggle();
@@ -56,16 +75,15 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 });
 
 // ------- HOME DATE ------////
+
 // Get today's date
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
 var yyyy = today.getFullYear();
 
-// Format it as yyyy-mm-dd for the input's value
 var todayDate = yyyy + '-' + mm + '-' + dd;
 
-// Set the minimum value of the date input to today's date
 document.querySelector('.pickup-date').setAttribute('min', todayDate);
 document.querySelector('.pickup-date-popup').setAttribute('min', todayDate);
 
@@ -74,22 +92,17 @@ var pickupDatePopupInput = document.querySelector('.pickup-date-popup');
 var returnDateInput = document.querySelector('.return-date');
 var returnDatePopupInput = document.querySelector('.return-date-popup');
 
-// Disable return date inputs initially
 returnDateInput.disabled = true;
 returnDatePopupInput.disabled = true;
 
-// Add an event listener to the Pickup Date input
 pickupDateInput.addEventListener('change', function () {
     var selectedDate = new Date(pickupDateInput.value);
     selectedDate.setDate(selectedDate.getDate() + 1);
 
-    // Format the minimum date for the Return Date input
     var minDate = selectedDate.toISOString().split('T')[0];
 
-    // Set the minimum value of the Return Date input
     returnDateInput.setAttribute('min', minDate);
 
-    // Enable return date input
     returnDateInput.disabled = false;
 });
 
@@ -97,12 +110,21 @@ pickupDatePopupInput.addEventListener('change', function () {
     var selectedDate = new Date(pickupDatePopupInput.value);
     selectedDate.setDate(selectedDate.getDate() + 1);
 
-    // Format the minimum date for the Return Date input
     var minDate = selectedDate.toISOString().split('T')[0];
 
-    // Set the minimum value of the Return Date input
     returnDatePopupInput.setAttribute('min', minDate);
 
-    // Enable return date input
     returnDatePopupInput.disabled = false;
+});
+
+
+$(document).ready(function () {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    var todayDate = yyyy + '-' + mm + '-' + dd;
+
+    $('.pickup-date-update').attr('min', todayDate);
 });
