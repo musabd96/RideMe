@@ -1,6 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Booking
+
 @{
+    ViewData["Title"] = "Details";
 }
-<h1>SUcess</h1>
+
+
+<section class="h-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-10 col-xl-8">
+                <div class="card" style="border-radius: 10px;">
+                    
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <p class="lead fw-normal mb-0" style="color: #011544; font-size:2.5rem;">Booking</p>
+                            <p class="small text-muted mb-0">Booking Voucher : @Model.Id</p>
+                        </div>
+                        <div class="card shadow-0 border mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 p-5">
+                                        <img src="@Html.DisplayFor(model => model.Car.Image)" alt="Image">
+
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0">Vehicle @Model.Car.Make @Model.Car.Model</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small"> @Model.Car.Shift</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Fuel   @Model.Car.Fuel</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">DailyRate $@Model.Car.DailyRate</p>
+                                    </div>
+                                </div>
+                                <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Location @Model.Rentals.PickupLocation</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.PickupDate.ToShortDateString() @Model.Rentals.PickupTime.ToString("hh\\:mm") </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.ReturnDate.ToShortDateString() @Model.Rentals.ReturnTime.ToString("hh\\:mm") </p>
+                                    </div>
+                                    <div class="col-md-3 align-items-center">
+                                        <p class="text-muted mb-0 small">RentalPeriod @Model.RentalPeriod Days</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-0 px-4 py-5"
+                         style="background-color: #011544; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                            Total
+                            paid: <span class="h2 mb-0 ms-2">$ @Model.TotalCost</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

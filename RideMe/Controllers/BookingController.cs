@@ -54,6 +54,17 @@ namespace RideMe.Controllers
         }
 
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var bookingInfo = await _context.Booking
+                    .Include(b => b.Car)
+                    .Include(b => b.Rentals)
+                    .Where(b => b.Id == id )
+                    .FirstOrDefaultAsync();
+
+            return View(bookingInfo);
+        }
+
 
 
 
@@ -97,6 +108,8 @@ namespace RideMe.Controllers
             return View(booking);
 
         }
+
+
 
 
 
