@@ -394,10 +394,14 @@ img {
 .pickup-date-popup,
 .pickup-date-update,
 .pickup-time,
+.pickup-time-popup,
+.pickup-time-update,
 .return-date,
 .return-date-popup,
 .return-date-update,
-.return-time {
+.return-time,
+.return-time-popup,
+.return-time-update {
     padding: 10px 20px;
     font-size: 1.5rem;
 }

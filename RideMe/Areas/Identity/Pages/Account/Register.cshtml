@@ -4,10 +4,9 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
 
 <!-- Section: Design Block -->
-<section class="text-center text-lg-start">
+<section class="text-center text-lg-start" style="font-size:1.5rem; margin: 10rem;">
   
   <!-- Jumbotron -->
   <div class="container py-4">
@@ -18,19 +17,19 @@
             backdrop-filter: blur(30px);
             ">
           <div class="card-body p-5 shadow-5 text-center">
-            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <h2 class="fw-bold mb-5">@ViewData["Title"]</h2>
             <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input asp-for="Input.FistName" class="form-control" aria-required="true" placeholder="Fist Name" />
+                    <input asp-for="Input.FistName" style="font-size:1.5rem;"class="form-control" aria-required="true" placeholder="Fist Name" />
                     <span asp-validation-for="Input.FistName" class="text-danger"></span>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input asp-for="Input.LastName" class="form-control"  aria-required="true" placeholder="Last Name" />
+                    <input asp-for="Input.LastName" style="font-size:1.5rem;"class="form-control"  aria-required="true" placeholder="Last Name" />
                     <span asp-validation-for="Input.LastName" class="text-danger"></span>
                   </div>
                 </div>
@@ -38,24 +37,24 @@
 
               <!-- Phone input -->
               <div class="form-outline mb-4">
-                <input asp-for="Input.PhoneNumber" class="form-control"  aria-required="true" placeholder="07********" />
+                <input asp-for="Input.PhoneNumber" style="font-size:1.5rem;"class="form-control"  aria-required="true" placeholder="07********" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
               </div>
               <!-- Email input -->
               <div class="form-outline mb-4">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <input asp-for="Input.Email" style="font-size:1.5rem;"class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-4">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <input asp-for="Input.Password" style="font-size:1.5rem;"class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
               </div>
 
               <!-- Password confirm input -->
               <div class="form-outline mb-4">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <input asp-for="Input.ConfirmPassword" style="font-size:1.5rem;"class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
               </div>
 
@@ -63,24 +62,24 @@
               <div class="form-check d-flex justify-content-center mb-4">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
                 <label class="form-check-label" for="form2Example33">
-                  Subscribe to our newsletter
+                  I have read and undstood RideOn Privacy Policy.
                 </label>
               </div>
 
-              <!-- Submit button -->
-              <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                <!-- Submit button -->
+                <button id="registerSubmit" type="submit" style="margin-bottom:2rem;" class=" w-100 btn btn-lg btn-primary">Register</button>
             </form>
 
             <div class="col text-center">
                 <!-- Login link -->
-                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Already have account</a>
+                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" >Already have account</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+        <img src="https://i.pinimg.com/originals/3e/d6/d1/3ed6d11631489411473a956caaac19fd.jpg" class="w-100 rounded-4 shadow-4"
           alt="" />
       </div>
     </div>

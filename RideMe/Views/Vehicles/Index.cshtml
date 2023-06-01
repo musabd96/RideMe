@@ -13,8 +13,6 @@
     var user = await UserManager.GetUserAsync(User);
 }
 
-<h1>@Model.Rentals.Id</h1>
-
 <div class="booking-info" id="selected-data-dropdown">
     <div class="booking-form">
         <div class="row">
@@ -112,7 +110,7 @@
             <div class="col">
                 <div class="form-group">
                     <label asp-for="Rentals.ReturnTime">Time</label>
-                    <input asp-for="Rentals.ReturnTime" class="form-control return-time" type="time" />
+                    <input asp-for="Rentals.ReturnTime" class="form-control return-time-update" type="time" />
                 </div>
             </div>
         </div>

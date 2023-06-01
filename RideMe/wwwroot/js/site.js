@@ -59,10 +59,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
         downArrow.toggle();
         upArrow.toggleClass('hidden');
         $('.booking').toggleClass('hidden');
@@ -94,8 +90,6 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 });
 
 // ------- HOME DATE ------////
-
-// Get today's date
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -138,3 +132,20 @@ pickupDatePopupInput.addEventListener('change', function () {
 
     returnDatePopupInput.disabled = false;
 });
+
+
+// Get the input element by its ID
+const pickupTimeInput = document.querySelector('.pickup-time');
+const pickupTimePopupInput = document.querySelector('.pickup-time-popup');
+const returnTimeInput = document.querySelector('.return-time');
+const returnTimePopupInput = document.querySelector('.return-time-popup');
+
+// Set the initial time to 11:00
+let currentTime = new Date();
+currentTime.setHours(11, 0);
+
+pickupTimeInput.value = currentTime.toTimeString().slice(0, 5);
+pickupTimePopupInput.value = currentTime.toTimeString().slice(0, 5);
+returnTimeInput.value = currentTime.toTimeString().slice(0, 5);
+returnTimePopupInput.value = currentTime.toTimeString().slice(0, 5);
+
