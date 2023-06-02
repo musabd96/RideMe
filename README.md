@@ -8,3 +8,10 @@ Additionally, the application includes administrative functionalities
 for managing cars.
 
 ## Features
+
+
+## Prerequisites
+
+
+## Getting Started
+
