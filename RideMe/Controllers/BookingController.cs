@@ -65,6 +65,26 @@ namespace RideMe.Controllers
             return View(bookingInfo);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(Booking model)
+        {
+            var existingRentals = await _context.Rentals.FindAsync(model.Rentals.Id);
+
+            if (existingRentals == null)
+            {
+                return NotFound();
+            }
+
+            existingRentals.PickupLocation = model.Rentals.PickupLocation;
+            existingRentals.PickupDate = model.Rentals.PickupDate;
+            existingRentals.PickupTime = model.Rentals.PickupTime;
+            existingRentals.ReturnDate = model.Rentals.ReturnDate;
+            existingRentals.ReturnTime = model.Rentals.ReturnTime;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index"); 
+        }
 
 
 
@@ -72,13 +92,10 @@ namespace RideMe.Controllers
         [HttpPost]
         public IActionResult CreateBooking(int carId, int rentalsId, int rentalPeriod, decimal totalCost)
         {
-            // Check if a booking already exists for the given rentalsId
             bool isBookingExists = _context.Booking.Any(b => b.RentalsId == rentalsId);
 
             if (isBookingExists)
             {
-                // Handle the case when a booking already exists
-                // You can redirect to an error page or return an error message
                 return RedirectToAction("BookingConfirmation", new { RentalsId = rentalsId });
             }
 
@@ -93,7 +110,6 @@ namespace RideMe.Controllers
             _context.Booking.Add(booking);
             _context.SaveChanges();
 
-            // Redirect to a success page or perform any other desired action.
             return RedirectToAction("BookingConfirmation", new { RentalsId = rentalsId });
         }
 
@@ -109,7 +125,7 @@ namespace RideMe.Controllers
 
         }
 
-        // GET: Booking/Delete/5
+        // GET: Booking/Cancel/5
         public async Task<IActionResult> Cancel(int? id)
         {
             if (id == null || _context.Booking == null)
@@ -127,7 +143,7 @@ namespace RideMe.Controllers
             return View(booking);
         }
 
-        // POST: Cars/Delete/5
+        // POST: Cars/Cancel/5
         [HttpPost, ActionName("Cancel")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelConfirmed(int id)

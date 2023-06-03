@@ -1,0 +1,64 @@
+﻿@model Booking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Rentals" asp-action="Edit" method="post" id="editForm">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
+                        <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location">
+                            <option value="">-Select City or Airport-</option>
+                            <option value="Stockholm">Stockholm</option>
+                            <option value="Gothenburg">Gothenburg</option>
+                            <option value="Malmö">Malmö</option>
+                            <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                            <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label asp-for="Rentals.PickupDate">Pick-up Date</label>
+                                <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label asp-for="Rentals.PickupTime">Time</label>
+                                <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label asp-for="Rentals.ReturnDate">Return Date</label>
+                                <input asp-for="Rentals.ReturnDate" class="form-control return-date" type="date" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label asp-for="Rentals.ReturnTime">Time</label>
+                                <input asp-for="Rentals.ReturnTime" class="form-control return-time" type="time" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

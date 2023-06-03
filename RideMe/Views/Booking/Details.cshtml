@@ -7,22 +7,20 @@
 @{
     DateTime today = DateTime.Today;
 
-    bool disableCancel = Model.Rentals.PickupDate.Date == today;
+    bool disableCancel = Model.Rentals.PickupDate.Date <= today;
 
     bool disableEdit = Model.Rentals.ReturnDate.Date < today;
 }
-
 
 <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-10 col-xl-8">
                 <div class="card" style="border-radius: 10px;">
-
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <p class="lead fw-normal mb-0" style="color: #011544; font-size:2.5rem;">Booking</p>
-                            <p class="small text-muted mb-0">Booking Voucher : @Model.Id</p>
+                            <p class="lead fw-normal mb-0" style="color: #011544; font-size: 2.5rem;">Booking</p>
+                            <p class="small text-muted mb-0">Booking Voucher: @Model.Id</p>
                         </div>
                         <div class="card shadow-0 border mb-4">
                             <div class="card-body">
@@ -37,7 +35,7 @@
                                         <p class="text-muted mb-0 small"> @Model.Car.Shift</p>
                                     </div>
                                     <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
-                                        <p class="text-muted mb-0 small">Fuel   @Model.Car.Fuel</p>
+                                        <p class="text-muted mb-0 small">Fuel @Model.Car.Fuel</p>
                                     </div>
                                     <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
                                         <p class="text-muted mb-0 small">DailyRate $@Model.Car.DailyRate</p>
@@ -49,53 +47,65 @@
                                         <p class="text-muted mb-0 small">Location @Model.Rentals.PickupLocation</p>
                                     </div>
                                     <div class="col-md-3">
-                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.PickupDate.ToShortDateString() @Model.Rentals.PickupTime.ToString("hh\\:mm") </p>
+                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.PickupDate.ToShortDateString() @Model.Rentals.PickupTime.ToString("hh\\:mm")</p>
                                     </div>
                                     <div class="col-md-3">
-                                        <p class="text-muted mb-0 small">Pickup Date @Model.Rentals.ReturnDate.ToShortDateString() @Model.Rentals.ReturnTime.ToString("hh\\:mm") </p>
+                                        <p class="text-muted mb-0 small">Return Date @Model.Rentals.ReturnDate.ToShortDateString() @Model.Rentals.ReturnTime.ToString("hh\\:mm")</p>
                                     </div>
                                     <div class="col-md-3 align-items-center">
-                                        <p class="text-muted mb-0 small">RentalPeriod @Model.RentalPeriod Days</p>
+                                        <p class="text-muted mb-0 small">Rental Period @Model.RentalPeriod Days</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2 text-sm-center text-md-start align-self-center my-2">
+                        <div class="col-12 text-sm-center text-md-start align-self-center my-2">
                             <div class="row">
-                                @if (disableEdit)
+                                @if(User.IsInRole("Admin"))
                                 {
-
+                                    <div class="col">
+                                        <button class="btn btn-outline-dark w-100 btn-edit" data-bs-toggle="modal" data-bs-target="#editModal" style="font-size:2rem;">Edit</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" style="font-size:2rem;">Cancelled</button>
+                                    </div>
                                 }
                                 else
                                 {
-                                    <div class="col">
-                                        <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
-                                    </div>
-                                    @if (disableCancel)
+                                    if (disableEdit)
                                     {
-                                        <div class="col">
-                                            <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" disabled>Cancelled</button>
-                                        </div>
+
+
                                     }
                                     else
                                     {
+                                        
                                         <div class="col">
-                                            <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancelled</button>
+                                            <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#editModal" style="font-size:2rem;">Edit</button>
                                         </div>
+                                        @if (disableCancel)
+                                        {
+                                            <div class="col">
+                                                <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" disabledstyle="font-size:2rem;">Cancelled</button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col">
+                                                <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" style="font-size:2rem;">Cancel</button>
+                                            </div>
+                                        }
+                                        
+
                                     }
                                 }
                                 
-
-                                
-
                             </div>
                         </div>
                     </div>
                     <div class="card-footer border-0 px-4 py-5"
                          style="background-color: #011544; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                         <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                            Total
-                            paid: <span class="h2 mb-0 ms-2">$ @Model.TotalCost</span>
+                            Total paid: <span class="h2 mb-0 ms-2">$ @Model.TotalCost</span>
                         </h5>
                     </div>
                 </div>
@@ -104,8 +114,115 @@
     </div>
 </section>
 
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Booking" asp-action="Edit" method="post" id="editForm">
+                    <input type="hidden" asp-for="@Model.Rentals.Id" />
+                    <div class="booking">
+                        <div class="form-group">
+                            <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
+                            <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" hidden>
+                                <option value="">-Select City or Airport-</option>
+                                <option value="Stockholm">Stockholm</option>
+                                <option value="Gothenburg">Gothenburg</option>
+                                <option value="Malmö">Malmö</option>
+                                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                            </select>
+                            <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" disabled>
+                                <option value="">-Select City or Airport-</option>
+                                <option value="Stockholm">Stockholm</option>
+                                <option value="Gothenburg">Gothenburg</option>
+                                <option value="Malmö">Malmö</option>
+                                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            @if (disableCancel)
+                            {
+                                <div class="col">
+
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupDate">Pick-up Date</label>
+                                        <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" disabled/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupTime">Time</label>
+                                        <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" disabled/>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupDate">Pick-up Date</label>
+                                        <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" hidden/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupTime">Time</label>
+                                        <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" hidden/>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col">
+
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupDate">Pick-up Date</label>
+                                        <input asp-for="Rentals.PickupDate" class="form-control pickup-date" type="date" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="Rentals.PickupTime">Time</label>
+                                        <input asp-for="Rentals.PickupTime" class="form-control pickup-time" type="time" />
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="Rentals.ReturnDate">Return Date</label>
+                                    <input asp-for="Rentals.ReturnDate" class="form-control return-date" type="date" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="Rentals.ReturnTime">Time</label>
+                                    <input asp-for="Rentals.ReturnTime" class="form-control return-time" type="time" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="Save changes" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Modal -->
 <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="cancelModalLabel">Cancel Booking</h5>
@@ -118,9 +235,10 @@
                 <a asp-action="Details" class="btn btn-outline-dark">No</a>
                 <form asp-action="Cancel" id="cancelForm">
                     <input type="hidden" asp-for="Id" />
-                    <input type="submit" value="Cancelled" class="btn btn-outline-danger" />
+                    <input type="submit" value="Cancel" class="btn btn-outline-danger" />
                 </form>
             </div>
         </div>
     </div>
 </div>
+
