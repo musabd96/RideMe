@@ -19,8 +19,7 @@
                 <div class="card" style="border-radius: 10px;">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <p class="lead fw-normal mb-0" style="color: #011544; font-size: 2.5rem;">Booking</p>
-                            <p class="small text-muted mb-0">Booking Voucher: @Model.Id</p>
+                            <p class="lead fw-normal mb-0" style="color: #011544; font-size: 2.5rem;">Booking details</p>
                         </div>
                         <div class="card shadow-0 border mb-4">
                             <div class="card-body">
@@ -78,7 +77,6 @@
                                     }
                                     else
                                     {
-                                        
                                         <div class="col">
                                             <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#editModal" style="font-size:2rem;">Edit</button>
                                         </div>
@@ -94,8 +92,6 @@
                                                 <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" style="font-size:2rem;">Cancel</button>
                                             </div>
                                         }
-                                        
-
                                     }
                                 }
                                 
@@ -231,12 +227,25 @@
             <div class="modal-body">
                 <h3>Are you sure you want to delete this Booking Nr: @Model.Id</h3>
             </div>
+            <div class="col-12 text-sm-center text-md-start align-self-center my-2">
+                <div class="row">
+                    
+                    <div class="col">
+                        <a asp-action="Details" class="btn btn-outline-dark w-100">No, Keep Booking</a>
+                    </div>
+                    <div class="col">
+                        <form asp-action="Cancel" id="cancelForm">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Yes, Cancel Booking" class="btn btn-outline-danger w-100" />
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+
             <div class="modal-footer">
-                <a asp-action="Details" class="btn btn-outline-dark">No</a>
-                <form asp-action="Cancel" id="cancelForm">
-                    <input type="hidden" asp-for="Id" />
-                    <input type="submit" value="Cancel" class="btn btn-outline-danger" />
-                </form>
+                
+                
             </div>
         </div>
     </div>
