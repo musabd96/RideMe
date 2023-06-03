@@ -6,7 +6,10 @@
 
 @{
     DateTime today = DateTime.Today;
+
     bool disableCancel = Model.Rentals.PickupDate.Date == today;
+
+    bool disableEdit = Model.Rentals.ReturnDate.Date < today;
 }
 
 
@@ -59,22 +62,32 @@
                         </div>
                         <div class="col-2 text-sm-center text-md-start align-self-center my-2">
                             <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
-                                </div>
-                                @if (disableCancel)
+                                @if (disableEdit)
                                 {
-                                        <div class="col">
-                                            <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancelled</button>
-                                        </div>
+
                                 }
                                 else
                                 {
+                                    <div class="col">
+                                        <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
+                                    </div>
+                                    @if (disableCancel)
+                                    {
+                                        <div class="col">
+                                            <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" disabled>Cancelled</button>
+                                        </div>
+                                    }
+                                    else
+                                    {
                                         <div class="col">
                                             <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancelled</button>
                                         </div>
+                                    }
                                 }
                                 
+
+                                
+
                             </div>
                         </div>
                     </div>
