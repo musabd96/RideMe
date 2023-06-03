@@ -3,29 +3,19 @@ This repository contains a car rental project developed using ASP.NET 7 MVC.
 
 ## Project Description
 The RideMe - car rental project is a web application that allows users to rent cars for a specified duration. 
-It provides a user-friendly interface for customers to browse available cars, make reservations. 
-Additionally, the application includes administrative functionalities 
-for managing cars.
+It provides a user-friendly interface for customers to browse available cars, 
+make reservations, and manage their bookings. 
+Additionally, the application includes administrative functionalities for managing cars, customers, and reservations.
 
 ## Features
-### Model-View-Controller (MVC) Architecture: 
-The project follows the MVC architectural pattern for separation of concerns and modularity.
-### Routing: 
-The routing system maps URLs to corresponding controller actions.
-### Views: 
-Razor views are used for generating HTML output and rendering the user interface.
-### Controllers: 
-Controllers handle user requests, process data, and return responses.
-### Models: 
-Models represent the data and business logic of the application.
-### Entity Framework Core: 
-The project uses Entity Framework Core as the Object-Relational Mapping (ORM) tool for database interactions.
-### Authentication and Authorization: 
-User authentication and authorization are implemented using ASP.NET Identity.
-### Dependency Injection: 
-The project leverages the built-in dependency injection feature of ASP.NET Core for managing dependencies.
-### Unit Testing: 
-Unit tests are included in the project for verifying the correctness of the code.
+### User Registration and Authentication: 
+Customers can register and create an account to access the application. User authentication is implemented using ASP.NET Identity.
+### Car Listings: 
+The application provides a list of available cars for rent, along with detailed information such as make, model, year, and rental price etc.
+### Booking Management: 
+Customers can make reservations for specific cars and durations. They can view, modify, and cancel their bookings.
+### Admin Dashboard: 
+An administrative dashboard is available for authorized users to manage cars, customers, and reservations.
 
 ## Prerequisites
 To run this project, you need to have the following software installed on your machine:
