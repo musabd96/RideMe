@@ -36,4 +36,18 @@ To run this project, you need to have the following software installed on your m
 1.Clone the repository:
 ```
 https://github.com/musabd96/RideMe.git
-´´´
+```
+2. Open the solution in Visual Studio or your preferred IDE.
+
+3. Build the solution to restore NuGet packages and compile the project.
+
+4. Set up the database connection string in the appsettings.json file.
+
+5. Apply the database migrations:
+```
+update-database
+```
+6. Run the application
+
+
+
