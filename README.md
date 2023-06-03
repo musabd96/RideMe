@@ -34,4 +34,6 @@ To run this project, you need to have the following software installed on your m
 
 ## Getting Started
 1.Clone the repository:
-```git clone https://github.com/your-username/your-repository.git´´´
+```
+https://github.com/musabd96/RideMe.git
+´´´
