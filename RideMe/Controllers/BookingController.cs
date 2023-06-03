@@ -109,8 +109,42 @@ namespace RideMe.Controllers
 
         }
 
+        // GET: Booking/Delete/5
+        public async Task<IActionResult> Cancel(int? id)
+        {
+            if (id == null || _context.Booking == null)
+            {
+                return NotFound();
+            }
 
+            var booking = await _context.Booking
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
+            return View(booking);
+        }
+
+        // POST: Cars/Delete/5
+        [HttpPost, ActionName("Cancel")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelConfirmed(int id)
+        {
+            if (_context.Booking == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Booking'  is null.");
+            }
+            var booking = await _context.Booking.FindAsync(id);
+            if (booking != null)
+            {
+                _context.Booking.Remove(booking);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
 
 

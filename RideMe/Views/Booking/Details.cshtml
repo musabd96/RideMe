@@ -53,6 +53,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-2 text-sm-center text-md-start align-self-center my-2">
+                            <a asp-controller="Booking" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-outline-dark w-100">Details</a>
+                        </div>
+                        <div class="col-2 text-sm-center text-md-start align-self-center my-2">
+                            <a asp-controller="Booking" asp-action="Cancel" asp-route-Id="@Model.Id" class="btn btn-outline-dark w-100">Details</a>
+                        </div>
                     </div>
                     <div class="card-footer border-0 px-4 py-5"
                          style="background-color: #011544; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
