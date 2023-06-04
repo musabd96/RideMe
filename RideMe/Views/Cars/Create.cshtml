@@ -4,86 +4,109 @@
     ViewData["Title"] = "Create";
 }
 
+<section class="text-center text-lg-start" style="font-size:1.5rem; margin: 10rem;">
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>
-                Add new Car
-            </h1>
-            <div class="row">
-                <div class="col-md-8 offset-2">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <img id="CarImagePreview"/>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Image"  class="control-label"></label>
-                            <input asp-for="Image" id="CarImagePreviewUrl" class="form-control" />
-                            <span asp-validation-for="Image" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Make" class="control-label"></label>
-                            <input asp-for="Make" class="form-control" />
-                            <span asp-validation-for="Make" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Model" class="control-label"></label>
-                            <input asp-for="Model" class="form-control" />
-                            <span asp-validation-for="Model" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Seat" class="control-label"></label>
-                            <input asp-for="Seat" class="form-control" />
-                            <span asp-validation-for="Seat" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Doors" class="control-label"></label>
-                            <input asp-for="Doors" class="form-control" />
-                            <span asp-validation-for="Doors" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Fuel" class="control-label"></label>
-                            <input asp-for="Fuel" class="form-control" />
-                            <span asp-validation-for="Fuel" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Shift" class="control-label"></label>
-                            <input asp-for="Shift" class="form-control" />
-                            <span asp-validation-for="Shift" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="DailyRate" class="control-label"></label>
-                            <input asp-for="DailyRate" class="form-control" />
-                            <span asp-validation-for="DailyRate" class="text-danger"></span>
-                        </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="Available" /> @Html.DisplayNameFor(model => model.Available)
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12 text-sm-center text-md-start align-self-center my-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <a asp-action="Index"  class="btn btn-outline-dark w-100" style="font-size:1.5rem;">Show all</a>
-                                        @*<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-dark w-100" style="font-size:1.5rem;">Details</a>*@
+    <!-- Jumbotron -->
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+                    <div class="card-body p-5 shadow-5">
+                        <h2 class="fw-bold mb-5 text-center">Add new car</h2>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-md-12 mb-4">
+                                <div class="form-outline">
+                                    <label asp-for="Image" class="control-label"></label>
+                                    <input asp-for="Image" id="CarImagePreviewUrl" class="form-control" />
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Make" class="control-label"></label>
+                                        <input asp-for="Make" class="form-control" />
+                                        <span asp-validation-for="Make" class="text-danger"></span>
                                     </div>
-                                    <div class="col">
-                                        @*<input type="submit" value="Create" class="btn btn-outline-dark w-100" style="font-size:1.5rem;" />*@
-                                        <input type="submit" value="Create" class="btn btn-outline-primary w-100" style="font-size:1.5rem;" />
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Model" class="control-label"></label>
+                                        <input asp-for="Model" class="form-control" />
+                                        <span asp-validation-for="Model" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
-                            @*<input type="submit" value="Create" class="btn btn-primary" />*@
-                        </div>
-                    </form>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Seat" class="control-label"></label>
+                                        <input asp-for="Seat" class="form-control" />
+                                        <span asp-validation-for="Seat" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Doors" class="control-label"></label>
+                                        <input asp-for="Doors" class="form-control" />
+                                        <span asp-validation-for="Doors" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Fuel" class="control-label"></label>
+                                        <input asp-for="Fuel" class="form-control" />
+                                        <span asp-validation-for="Fuel" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="Shift" class="control-label"></label>
+                                        <input asp-for="Shift" class="form-control" />
+                                        <span asp-validation-for="Shift" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label asp-for="DailyRate" class="control-label"></label>
+                                <input asp-for="DailyRate" class="form-control" />
+                                <span asp-validation-for="DailyRate" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Available" /> @Html.DisplayNameFor(model => model.Available)
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-12 text-sm-center text-md-start align-self-center my-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a asp-action="Index" class="btn btn-outline-dark w-100" style="font-size:1.5rem;">Show all</a>
+                                        </div>
+                                        <div class="col">
+                                            <input type="submit" value="Create" class="btn btn-outline-primary w-100" style="font-size:1.5rem;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </p>
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <img id="CarImagePreview"  class="w-100 rounded-4 shadow-4" alt="" />
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 
 
@@ -95,7 +118,16 @@
     <script>
         $("#CarImagePreviewUrl").on("change", function () {
             var output = document.getElementById('CarImagePreview');
-            output.src = $(this).val();
-        })
+            var imageUrl = $(this).val();
+
+            var img = new Image();
+            img.onload = function () {
+                output.src = imageUrl;
+            };
+            img.onerror = function () {
+                output.src = 'https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png';
+            };
+            img.src = imageUrl;
+        });
     </script>
 }
