@@ -4,74 +4,53 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-<h1>Car Count: @ViewBag.CarCount</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-primary w-25" style="font-size:1.5rem; margin: 2rem">Create New <i class="ri-car-line"></i></a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Seat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Doors)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Shift)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DailyRate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Available)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    <img src="@Html.DisplayFor(modelItem => item.Image)" style="width:6rem;"/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Make)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Doors)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shift)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DailyRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Available)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        @foreach (var item in Model)
+        {
+
+            <div class="col">
+                <div class="card-sl-cars" style="margin-bottom: 6rem;">
+                    <div class="card-image">
+                        <img src="@item.Image" alt="">
+                    </div>
+
+                    <a class="card-action " asp-action="Edit" asp-route-id="@item.Id"><i class="ri-pencil-line"></i></a>
+                    <div class="card-cars-heading">
+                        @item.Make @item.Model
+                    </div>
+                    <div class="card-text">
+
+                    </div>
+                    <div class="card-text">
+                        <span class="card-price">Shifted: @item.Shift</span> |
+                        <span class="card-price">AC</span>
+                        <span class="card-price">Fuel: @item.Fuel</span> |
+                        <span class="card-price">$ @item.DailyRate/day</span>
+                        <div class="col-12 text-sm-center text-md-start align-self-center my-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-dark w-100" style="font-size:1.5rem;">Details</a>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger w-100" style="font-size:1.5rem;">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                       
+                    
+
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

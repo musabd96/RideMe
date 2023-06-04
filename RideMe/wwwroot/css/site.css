@@ -424,14 +424,28 @@ a {
 /* Card Styles */
 
 .card-sl {
-    height: 28rem;
+    height: 30rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     transition: box-shadow .25s;
     position: relative;
 }
 
+.card-sl-cars {
+    height: 25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: box-shadow .25s;
+    position: relative;
+    cursor:pointer;
+}
+
 .card-sl:hover {
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    transform: scale(1.05);
+    z-index: 1;
+}
+.card-sl-cars:hover {
     box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     transform: scale(1.05);
     z-index: 1;
@@ -474,6 +488,12 @@ a {
 
 .card-heading {
     font-size: 1rem;
+    font-weight: bold;
+    background: #fff;
+    padding: 1px 15px;
+}
+.card-cars-heading {
+    font-size: 1.5rem;
     font-weight: bold;
     background: #fff;
     padding: 1px 15px;
