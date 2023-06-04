@@ -10,8 +10,8 @@ Additionally, the application includes administrative functionalities for managi
 ## Features
 ### User Registration and Authentication: 
 Customers can register and create an account to access the application. User authentication is implemented using ASP.NET Identity.
-Admin login: admin@admin.com
-Password: Admin123!
+#### Admin login: admin@admin.com
+#### Password: Admin123!
 ### Car Listings: 
 The application provides a list of available cars for rent, along with detailed information such as make, model, year, and rental price etc.
 ### Booking Management: 
