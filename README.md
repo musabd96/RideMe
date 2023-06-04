@@ -10,6 +10,7 @@ Additionally, the application includes administrative functionalities for managi
 ## Features
 ### User Registration and Authentication: 
 Customers can register and create an account to access the application. User authentication is implemented using ASP.NET Identity.
+### Admin Login 
 #### Admin login: admin@admin.com
 #### Password: Admin123!
 ### Car Listings: 
