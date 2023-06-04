@@ -60,6 +60,7 @@ namespace RideMe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Image,Make,Model,Seat,Doors,Shift,DailyRate,Available")] Car car)
         {
+           
             if (ModelState.IsValid)
             {
                 _context.Add(car);
@@ -68,11 +69,10 @@ namespace RideMe.Controllers
             }
             return View(car);
         }
-
         // GET: Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Car == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -82,6 +82,7 @@ namespace RideMe.Controllers
             {
                 return NotFound();
             }
+
             return View(car);
         }
 
@@ -90,7 +91,7 @@ namespace RideMe.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Make,Model,Seat,Doors,Shift,DailyRate,Available")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,Make,Model,Seat,Doors,Fuel,Shift,DailyRate,Available")] Car car)
         {
             if (id != car.Id)
             {
@@ -101,7 +102,22 @@ namespace RideMe.Controllers
             {
                 try
                 {
-                    _context.Update(car);
+                    var existingCar = await _context.Car.FindAsync(id);
+                    if (existingCar == null)
+                    {
+                        return NotFound();
+                    }
+
+                    existingCar.Image = car.Image;
+                    existingCar.Make = car.Make;
+                    existingCar.Model = car.Model;
+                    existingCar.Seat = car.Seat;
+                    existingCar.Doors = car.Doors;
+                    existingCar.Shift = car.Shift;
+                    existingCar.DailyRate = car.DailyRate;
+                    existingCar.Available = car.Available;
+
+                    _context.Update(existingCar);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -117,6 +133,7 @@ namespace RideMe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(car);
         }
 
