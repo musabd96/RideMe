@@ -72,7 +72,12 @@
                                 {
                                     if (disableEdit)
                                     {
-
+                                        <div class="col">
+                                            <button class="btn btn-outline-dark w-100 btn-edit" data-bs-toggle="modal" data-bs-target="#editModal" style="font-size:2rem;" disabled>Edit</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" style="font-size:2rem;" disabled>Cancelled</button>
+                                        </div>
 
                                     }
                                     else
@@ -83,7 +88,7 @@
                                         @if (disableCancel)
                                         {
                                             <div class="col">
-                                                <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" disabledstyle="font-size:2rem;">Cancelled</button>
+                                                <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#cancelModal" style="font-size:2rem;" disabled>Cancelled</button>
                                             </div>
                                         }
                                         else

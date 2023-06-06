@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace RideMe.Controllers
 {
-    [Authorize]
+   
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,6 +20,7 @@ namespace RideMe.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Cars
         public async Task<IActionResult> Index()
         {
@@ -32,6 +33,14 @@ namespace RideMe.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }

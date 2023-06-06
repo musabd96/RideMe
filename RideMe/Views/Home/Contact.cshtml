@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout file
+}
+
+<div class="container mt-5">
+    <div class="row" >
+        <div class="col-lg-6 lead text-left mb-4" style="margin-top:5rem">
+            <h2 style="font-size:4rem; color: #">
+                Contact Information
+            </h2>
+            <p style="font-size:2rem;">
+                Address:  Götagatan 12, 41234 Göteborg<br>
+                Phone: 031234568
+            </p>
+            <p style="font-size:2rem; font-weight:bold;">
+                Opening Hours
+            </p>
+            <p style="font-size:2rem;">
+                Monday to Friday: 10:00 - 16:00<br>
+                Saturday: 10:00 - 13:00<br>
+                Sunday: Closed
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+            <div class="booking">
+                <div class="card-body">
+                    <form action="booking @Url.Action("SendEmail", "Contact")" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
