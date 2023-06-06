@@ -127,24 +127,40 @@
                 <form asp-controller="Booking" asp-action="Edit" method="post" id="editForm">
                     <input type="hidden" asp-for="@Model.Rentals.Id" />
                     <div class="booking">
+                        
                         <div class="form-group">
                             <label asp-for="Rentals.PickupLocation">Pick-up Location</label>
-                            <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" hidden>
-                                <option value="">-Select City or Airport-</option>
-                                <option value="Stockholm">Stockholm</option>
-                                <option value="Gothenburg">Gothenburg</option>
-                                <option value="Malmö">Malmö</option>
-                                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
-                                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
-                            </select>
-                            <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" disabled>
-                                <option value="">-Select City or Airport-</option>
-                                <option value="Stockholm">Stockholm</option>
-                                <option value="Gothenburg">Gothenburg</option>
-                                <option value="Malmö">Malmö</option>
-                                <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
-                                <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
-                            </select>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" >
+                                    <option value="">-Select City or Airport-</option>
+                                    <option value="Stockholm">Stockholm</option>
+                                    <option value="Gothenburg">Gothenburg</option>
+                                    <option value="Malmö">Malmö</option>
+                                    <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                                    <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                                </select>
+                            }
+                            else
+                            {
+                                <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" hidden>
+                                    <option value="">-Select City or Airport-</option>
+                                    <option value="Stockholm">Stockholm</option>
+                                    <option value="Gothenburg">Gothenburg</option>
+                                    <option value="Malmö">Malmö</option>
+                                    <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                                    <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                                </select>
+                                <select asp-for="Rentals.PickupLocation" asp-placeholder="-Select City or Airport-" class="form-control pickup-location" disabled>
+                                    <option value="">-Select City or Airport-</option>
+                                    <option value="Stockholm">Stockholm</option>
+                                    <option value="Gothenburg">Gothenburg</option>
+                                    <option value="Malmö">Malmö</option>
+                                    <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport</option>
+                                    <option value="Gothenburg Landvetter Airport">Gothenburg Landvetter Airport</option>
+                                </select>
+                            }
+                           
                         </div>
                         
                         <div class="row">
