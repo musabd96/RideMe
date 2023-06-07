@@ -101,7 +101,7 @@ document.getElementById("close-popup-btn").addEventListener("click", function ()
 
 });
 
-// ------- HOME DATE ------////
+// ------- HOME/Vehicle/Edit Booking DATE  ------////
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');

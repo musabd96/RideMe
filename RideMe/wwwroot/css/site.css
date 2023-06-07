@@ -393,15 +393,19 @@ img {
 .pickup-date,
 .pickup-date-popup,
 .pickup-date-update,
+.pickup-date-edit,
 .pickup-time,
 .pickup-time-popup,
 .pickup-time-update,
+.pickup-time-edit,
 .return-date,
 .return-date-popup,
 .return-date-update,
+.return-date-edit,
 .return-time,
 .return-time-popup,
-.return-time-update {
+.return-time-update,
+.return-time-edit {
     padding: 10px 20px;
     font-size: 1.5rem;
 }
