@@ -69,17 +69,21 @@ namespace RideMe.Controllers
         public async Task<IActionResult> Edit(Booking model)
         {
             var existingRentals = await _context.Rentals.FindAsync(model.Rentals.Id);
-
+            var existingBooking = await _context.Booking.FindAsync(model.Id);
+            
             if (existingRentals == null)
             {
                 return NotFound();
             }
-
             existingRentals.PickupLocation = model.Rentals.PickupLocation;
             existingRentals.PickupDate = model.Rentals.PickupDate;
             existingRentals.PickupTime = model.Rentals.PickupTime;
             existingRentals.ReturnDate = model.Rentals.ReturnDate;
             existingRentals.ReturnTime = model.Rentals.ReturnTime;
+            // Calculate rental period
+            TimeSpan rentalPeriod = existingRentals.ReturnDate - existingRentals.PickupDate;
+            existingBooking.RentalPeriod = (int)rentalPeriod.TotalDays;
+            
 
             await _context.SaveChangesAsync();
 

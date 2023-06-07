@@ -126,6 +126,7 @@
             <div class="modal-body">
                 <form asp-controller="Booking" asp-action="Edit" method="post" id="editForm">
                     <input type="hidden" asp-for="@Model.Rentals.Id" />
+                    <input type="hidden" asp-for="@Model.Id" />
                     <div class="booking">
                         
                         <div class="form-group">
