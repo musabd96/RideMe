@@ -131,8 +131,25 @@
     @carCount OFFERS
 </h2>
 
+<form asp-action="Search" class="d-flex justify-content-center" style="font-size:1.5rem;">
+    <input type="hidden" asp-for="@Model.Rentals.Id" />
+    <input name="search" class="col-8  border border-3 border-top-0 border-start-0 border-end-0 p-3 " type="search" placeholder="Search"
+           aria-label="Search" style=" outline: none;">
+    <button class="btn btn-primary w-auto p-3" type="submit"><i class="ri-search-line"></i> </button>
+</form>
+
+<div class="col-12 d-flex justify-content-center m-5">
+    @if (carCount == 0)
+    {
+        <h1 class="justify-content-center">
+            NOT FOUND THIS CAR
+        </h1>
+    }
+</div>
+
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        
         @foreach (var car in Model.Cars)
         {
             <div class="col">

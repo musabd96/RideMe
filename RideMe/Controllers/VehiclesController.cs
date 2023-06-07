@@ -30,9 +30,39 @@ namespace RideMe.Controllers
                 Cars = cars,
                 Rentals = rentals
             };
+            
             return View(booking);
         }
 
+        // Search: Car
+        public async Task<IActionResult> Search(Booking model, string search)
+        {
+            if(search == null)
+            {
+                var rental = await _context.Rentals
+                .FirstOrDefaultAsync(b => b.Id == model.Rentals.Id);
+                var car = await _context.Car.ToListAsync();
+                var bookinginfo = new Booking
+                {
+                    Cars = car,
+                    Rentals = rental
+                };
+                return View("Index", bookinginfo);
+            }
+            var cars = await _context.Car
+                .Where(c => c.Make.Contains(search))
+                .ToListAsync();
+
+            // Retrieve the last inserted reservation
+            var rentals = await _context.Rentals
+                .FirstOrDefaultAsync(b => b.Id == model.Rentals.Id);
+            var booking = new Booking
+            {
+                Cars = cars,
+                Rentals = rentals
+            };
+            return View("Index", booking);
+        }
 
 
         [HttpPost]

@@ -78,7 +78,55 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $('.booking').click(function () {
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        var todayDate = yyyy + '-' + mm + '-' + dd;
+
+        $('.pickup-date-edit').attr('min', todayDate);
+
+        var pickupDate = new Date($('.pickup-date-edit').val());
+        pickupDate.setDate(pickupDate.getDate() + 1);
+
+        var dd = String(pickupDate.getDate()).padStart(2, '0');
+        var mm = String(pickupDate.getMonth() + 1).padStart(2, '0');
+        var yyyy = pickupDate.getFullYear();
+
+        var returnDate = yyyy + '-' + mm + '-' + dd;
+
+        $('.return-date-edit').attr('min', returnDate);
+
+
+        $('.pickup-date-edit').on('change', function () {
+            var pickupDate = new Date($(this).val());
+            pickupDate.setDate(pickupDate.getDate() + 1);
+
+            var returnDate = pickupDate.toISOString().split('T')[0];
+            $('.return-date-edit').val(returnDate);
+        });
+
+
+
+        $('.pickup-date-edit').change(function () {
+            var pickupDate = new Date($(this).val());
+            var returnDate = new Date(pickupDate);
+            returnDate.setDate(returnDate.getDate() + 1);
+
+            var dd = String(returnDate.getDate()).padStart(2, '0');
+            var mm = String(returnDate.getMonth() + 1).padStart(2, '0');
+            var yyyy = returnDate.getFullYear();
+
+            var nextDayDate = yyyy + '-' + mm + '-' + dd;
+            $('.return-date-edit').attr('min', nextDayDate);
+        });
+
+    });
+});
 
 // Select all elements with the class "open-popup-btn"
 var buttons = document.querySelectorAll(".open-popup");
